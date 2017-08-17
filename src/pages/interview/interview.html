@@ -1,0 +1,26 @@
+<!--
+  Generated template for the InterviewPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Interview</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+
+    <img src="./assets/interview.png">
+    <p>
+      We have interviewed <b>Michele Pireddu</b> – an patient with AFib who was collaborating on the development of the MobiGuide system. Michele has been always very collaborative, willing to experiment with new technologies and also, as a patient, he is very compliant with his therapy.
+    </p>
+
+  <ion-list>
+    <button text-wrap ion-item *ngFor="let item of items" (click)="openInterviewDetailPage(item)">{{item.question}}</button>
+  </ion-list>
+
+</ion-content>

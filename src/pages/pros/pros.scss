@@ -1,0 +1,16 @@
+page-pros {
+    scroll-content {
+        display: flex;
+        flex-direction: column;
+    }
+ 
+    ion-grid {
+        // height: 100%;
+        padding: 0;
+    }
+ 
+    ion-row {
+        flex: 1;
+        padding: 0;
+    }
+}

@@ -1,0 +1,72 @@
+<ion-view title="Daily Summary" id="page5">
+  <ion-content padding="true" class="has-header">
+    <div>
+      <img src="img/OdSlHKsSTbWziDcKsXQH_shutterstock_175331306-300x200.jpg" style="display: block; width: 100%; height: auto; margin-left: auto; margin-right: auto;">
+    </div>
+    <div class="spacer" style="width: 300px; height: 24px;"></div>
+    <h4 id="dailySummary-heading5" style="color:#000000;text-align:center;">DD/MM/YYYY</h4>
+    <form id="dailySummary-form12" class="list">
+      <ion-item class="range range-positive" id="dailySummary-range1">Overall Well-Being
+        <input type="range" value="3" min="1" max="5" step="1" name="wellbeing">
+      </ion-item>
+      <button id="dailySummary-button8" class="button button-positive button-block">Submit</button>
+    </form>
+    <ion-list id="dailySummary-list14">
+      <ion-item id="dailySummary-list-item45">INR
+        <span class="item-note">Number</span>
+      </ion-item>
+    </ion-list>
+    <h4 id="dailySummary-heading6" style="color:#0D31F1;">Reported Symptoms</h4>
+    <ion-list id="dailySummary-list2">
+      <ion-item id="dailySummary-list-item5">Symptom 1
+        <span class="item-note">Time</span>
+      </ion-item>
+      <ion-item id="dailySummary-list-item6">Symptom 2
+        <span class="item-note">Time</span>
+      </ion-item>
+      <ion-item id="dailySummary-list-item7">Symptom 3
+        <span class="item-note">Time</span>
+      </ion-item>
+    </ion-list>
+    <a ui-sref="symptoms()" id="dailySummary-button10" style="border-radius:0px 0px 0px 0px;" class="button button-positive button-small button-block button-outline">Report Symptom</a>
+    <div class="spacer" style="width: 300px; height: 20px;"></div>
+    <h4 id="dailySummary-heading16" style="color:#F10D44;">Risky Events</h4>
+    <ion-list id="dailySummary-list12">
+      <ion-item id="dailySummary-list-item36">Event 1
+        <span class="item-note">Time</span>
+      </ion-item>
+      <ion-item id="dailySummary-list-item37">Event 2
+        <span class="item-note">Time</span>
+      </ion-item>
+    </ion-list>
+    <a ui-sref="riskyEvents()" id="dailySummary-button12" style="border-radius:0px 0px 0px 0px;" class="button button-assertive button-small button-block button-outline">Report Risky Event</a>
+    <div class="spacer" style="width: 300px; height: 20px;"></div>
+    <h4 id="dailySummary-heading10" style="color:#1FF10D;">Diet</h4>
+    <ion-list id="dailySummary-list4">
+      <ion-item id="dailySummary-list-item17">Nutrient 1
+        <span class="item-note">Amount</span>
+      </ion-item>
+      <ion-item id="dailySummary-list-item18">Nutrient 2
+        <span class="item-note">Amount</span>
+      </ion-item>
+      <ion-item id="dailySummary-list-item19">Nutrient 3
+        <span class="item-note">Amount</span>
+      </ion-item>
+    </ion-list>
+    <a ui-sref="reportingAdherence()" id="dailySummary-button13" style="border-radius:0px 0px 0px 0px;" class="button button-balanced button-small button-block button-outline">Report Diet Non-Compliance</a>
+    <div class="spacer" style="width: 300px; height: 20px;"></div>
+    <h4 id="dailySummary-heading17" style="color:#0DB1F1;">Medications</h4>
+    <ion-list id="dailySummary-list13">
+      <ion-item id="dailySummary-list-item39">Drug 1
+        <span class="item-note">Dosage</span>
+      </ion-item>
+      <ion-item id="dailySummary-list-item40">Drug 2
+        <span class="item-note">Dosage</span>
+      </ion-item>
+      <ion-item id="dailySummary-list-item41">Drug 3
+        <span class="item-note">Dosage</span>
+      </ion-item>
+    </ion-list>
+    <a ui-sref="reportingAdherence()" id="dailySummary-button14" style="border-radius:0px 0px 0px 0px;" class="button button-calm button-small button-block button-outline">Report Medication Non-Compliance</a>
+  </ion-content>
+</ion-view>

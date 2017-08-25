@@ -1,6 +1,7 @@
 import { VideoPage } from './../video/video';
 import { InterviewPage } from './../interview/interview';
 import { EducationDetailPage } from './../education-detail/education-detail';
+import { ManualPage } from './../manual/manual';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
@@ -91,15 +92,29 @@ export class EducationPage {
         this.navCtrl.push(InterviewPage); 
         break;
       case EducationPage.ID_EDUCATION:
+        //this.rememberChoice(item.title);
         this.navCtrl.push(EducationDetailPage, {item: item, title: item.alternativeTitle});
         break;
       case EducationPage.ID_VIDEO:
         this.navCtrl.push(VideoPage);
         break;
       case EducationPage.ID_MANUAL:
+        this.navCtrl.push(ManualPage);
         break;
       default: 
     }
   }
+    
+    rememberChoice(id){
+        console.log(id);
+        let data = {
+            title: 'important',
+            stuffs: ['fist', 'second'],
+            time:'now'
+        };
+        
+        this.navCtrl.push(EducationDetailPage, data);
+        
+    }
 
 }

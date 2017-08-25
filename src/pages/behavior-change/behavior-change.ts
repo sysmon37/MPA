@@ -1,4 +1,5 @@
 import { ProsPage } from './../pros/pros';
+import { BarriersToEngagementPage } from './../barriers-to-engagement/barriers-to-engagement';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
@@ -27,7 +28,7 @@ export class BehaviorChangePage {
     console.log('ionViewDidLoad BehaviorChangePage');
     this.items = [
       {id: BehaviorChangePage.ID_EXPLORE, title: 'Pros of Engagement', disabled: 0, scenarios: [1, 2, 3], special: 0},
-      {id: BehaviorChangePage.ID_OTHER, title: 'Barriers to Engagement', disabled: 1, scenarios: [2, 3], special: 0},
+
       {id: BehaviorChangePage.ID_OTHER, title: 'Next Stage', disabled: 0, scenarios: [1, 2, 3], special: 1}
     ];
 
@@ -37,6 +38,9 @@ export class BehaviorChangePage {
     switch (item.id) {
       case BehaviorChangePage.ID_EXPLORE:
         this.navCtrl.push(ProsPage);
+        break;
+        case BehaviorChangePage.ID_OTHER:
+        this.navCtrl.push(BarriersToEngagementPage);
         break;
     }
   }

@@ -19,7 +19,7 @@
   <ion-list>
     <ion-item no-lines>
       <ion-label>I find this information useful</ion-label>
-      <ion-checkbox large checked color="secondary"></ion-checkbox>
+      <ion-checkbox large checked color="secondary" [(ngModel)]="isChecked" (ionChange)="updateStatus()"></ion-checkbox>
     </ion-item>
   </ion-list>
 </ion-content> 

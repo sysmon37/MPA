@@ -13,5 +13,6 @@
 </ion-header>
 
 <ion-content padding>
-  <button *ngFor="let item of items" ion-button block large [disabled]="item.disabled">{{item.title}}</button>
+  <button *ngFor="let item of items" ion-button block large [disabled]="item.disabled" [outline]="item.special" (click)="openReportingDetailPage(item)">{{item.title}}</button>
 </ion-content>
+

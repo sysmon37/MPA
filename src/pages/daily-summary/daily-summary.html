@@ -1,4 +1,4 @@
-<!--
+  <!--
   Generated template for the DailySummaryPage page.
 
   See http://ionicframework.com/docs/components/#navigation for more info on
@@ -20,21 +20,17 @@
     
     <ion-list>
         <ion-item>
-        <ion-label>Over All Wellbeing</ion-label>
-      <ion-range [(ngModel)]="wellbeing">
-        
-      </ion-range>
-            
-    </ion-item>
-    
-    <button ion-button block>Submit</button>
-    </ion-list>
+          <ion-label>Overall Wellbeing</ion-label>
+          <ion-range [(ngModel)]="wellbeing" min="-2" max="2" steps=5>  
+            <ion-icon range-left name="cloudy"></ion-icon>
+            <ion-icon range-right name="sunny"></ion-icon>
+          </ion-range>            
+        </ion-item>
+      </ion-list>
 
-    <ion-list>
-      
+    <ion-list>      
     <ion-item-divider color="light">
         INR
-     
       <ion-note item-end>
         Number
       </ion-note>
@@ -42,10 +38,11 @@
 
   </ion-list>
     
-    <h3>Reported Symptoms</h3>
-
-    <ion-list>
-      
+  <ion-list>
+    <ion-list-header>
+      Reported Symptoms
+        <button ion-button item-right icon-left color="secondary" (click)="reportSymptoms()"><ion-icon name="add-circle"></ion-icon>Add</button>
+    </ion-list-header>
     <ion-item-divider color="light">
         Symptom 1
      
@@ -68,13 +65,12 @@
       </ion-note>
     </ion-item-divider>
   </ion-list>
-    <button (click)="openSymptoms()" ion-button block outline>Report Symptoms</button>
-    <br />
     
-        <h3>Reported Events</h3>
-
     <ion-list>
-      
+        <ion-list-header>
+          Reported Risky Events
+          <button ion-button item-right icon-left color="secondary" (click)="reportRiskyEvent()"><ion-icon name="add-circle"></ion-icon>Add</button>
+        </ion-list-header>
     <ion-item-divider color="light">
         Event 1
      
@@ -91,13 +87,12 @@
     </ion-item-divider>
 
   </ion-list>
-    <button (click)="openRisky()" ion-button block outline>Report Risky Event</button>
-    <br />
     
-        <h3>Reported Risky Event</h3>
-
     <ion-list>
-      
+        <ion-list-header>
+          Reported Diet Non-compliance
+          <button ion-button item-right icon-left color="secondary" (click)="reportDietNonCompliance()"><ion-icon name="add-circle"></ion-icon>Add</button>
+        </ion-list-header>
     <ion-item-divider color="light">
         Nutrient 1
      
@@ -120,13 +115,12 @@
       </ion-note>
     </ion-item-divider>
   </ion-list>
-    <button (click)="openDiet()" ion-button block outline>Report Diet Non-compliance</button>
-    <br />
     
-        <h3 color="blue">Reported Symptoms</h3>
-
     <ion-list>
-      
+        <ion-list-header>
+          Reported Medication Non-compliance
+          <button ion-button item-right icon-left color="secondary" (click)="reportTreatmentNonCompliance()"><ion-icon name="add-circle"></ion-icon>Add</button>
+      </ion-list-header>        
     <ion-item-divider color="light">
         Drug 1
      
@@ -149,7 +143,7 @@
       </ion-note>
     </ion-item-divider>
   </ion-list>
-    <button (click)="openDiet()" ion-button block outline>Report medication Non-Compliace</button>
     
+    <button ion-button block (click)="submit()">Submit</button>
     
 </ion-content>

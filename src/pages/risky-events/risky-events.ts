@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
+import { RiskyEvent } from '../../enums/enums';
 /**
  * Generated class for the RiskyEventsPage page.
  *
@@ -15,32 +16,41 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class RiskyEventsPage {
     
-    isToggled1 : boolean;
-    isToggled2 : boolean;
-    isToggled3 : boolean;
-    isToggled4 : boolean;
-    isToggled5 : boolean;
-    isToggled6 : boolean;
-    isToggled7 : boolean;
+    dateTime : string;
+    allDay : boolean = false;
+    items : any[];
+    values : boolean[] = [];
+    canSubmit : boolean = false;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-      
-      
+  constructor(public navCtrl: NavController, public navParams: NavParams) {      
+    this.items = [
+      {id: RiskyEvent.Biopsy, title: 'Biopsy'},
+      {id: RiskyEvent.MinorSurgery, title: 'Minor surgery'},
+      {id: RiskyEvent.MajorSurgery, title: 'Major surgery'},
+      {id: RiskyEvent.Dentist, title: 'Dentist (extraction of 2 or more teeth)'},
+      {id: RiskyEvent.DiagnosticProcedure, title: 'Diagnostic procedure (with risk of bleeding)'},
+      {id: RiskyEvent.Hospitalization, title: 'Hospitalization'}
+    ];
+    for (let i in this.items)
+      this.values[i] = false;
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad RiskyEventsPage');
+    this.dateTime = new Date().toISOString();
   }
-    
-    notify(){
-        
-        console.log(this.isToggled1);
-        console.log(this.isToggled2);
-        console.log(this.isToggled3);
-        console.log(this.isToggled4);
-        console.log(this.isToggled5);
-        console.log(this.isToggled6);
-        console.log(this.isToggled7);
-    }
+ 
+  submit() {
+    this.navCtrl.pop();
+    console.log(this.values);
+  }
 
+  valueChanged() {
+    this.canSubmit = false;
+    for (let v of this.values)
+      if (v) {
+        this.canSubmit = true;
+        break;
+      }
+  }
 }

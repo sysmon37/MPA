@@ -5,69 +5,35 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
   <ion-navbar>
     <ion-title>Risky Events</ion-title>
   </ion-navbar>
-
 </ion-header>
 
-
 <ion-content padding>
-    <img src="../../assets/BjNCl7xVS4CblfUqizOl_maxresdefault.jpg">
+    <img src="../../assets/warning.jpg">
     
     <ion-list>
+      <ion-item>
+        <ion-label>Date</ion-label>
+        <ion-datetime displayFormat="YYYY-MM-DD" [(ngModel)]="dateTime"></ion-datetime>
+      </ion-item>        
         <ion-item>
-      <ion-label>All Day</ion-label>
-      <ion-toggle></ion-toggle>
-    </ion-item>
-        
-        <ion-item>
-  <ion-label>Time</ion-label>
-  <ion-datetime displayFormat="HH:mm" [(ngModel)]="myDate"></ion-datetime>
-</ion-item>
-        
+          <ion-label>All day</ion-label>
+          <ion-toggle [(ngModel)]="allDay"></ion-toggle>
+      </ion-item>      
+      <ion-item>
+        <ion-label>Time</ion-label>
+        <ion-datetime displayFormat="H:mm" [(ngModel)]="dateTime" [disabled]="allDay"></ion-datetime>
+      </ion-item>        
     </ion-list>
     
- 
-    
-    <ion-item>
-      <ion-label>Biopsy</ion-label>
-      <ion-toggle [(ngModel)]="isToggled1" (ionChange)="notify()"></ion-toggle>
-    </ion-item>
-    
-    <ion-item>
-      <ion-label>Endoscopy</ion-label>
-      <ion-toggle [(ngModel)]="isToggled2" (ionChange)="notify()"></ion-toggle>
-    </ion-item>
-    
-    <ion-item>
-      <ion-label>Minor surgery</ion-label>
-      <ion-toggle [(ngModel)]="isToggled3" (ionChange)="notify()"></ion-toggle>
-    </ion-item>
-    
-    <ion-item>
-      <ion-label>Major surgery</ion-label>
-      <ion-toggle [(ngModel)]="isToggled4" (ionChange)="notify()"></ion-toggle>
-    </ion-item>
-    
-    <ion-item>
-      <ion-label>Dentist</ion-label>
-      <ion-toggle [(ngModel)]="isToggled5" (ionChange)="notify()"></ion-toggle>
-    </ion-item>
-    
-    <ion-item>
-      <ion-label>Diagnostic procedure</ion-label>
-      <ion-toggle [(ngModel)]="isToggled6" (ionChange)="notify()"></ion-toggle>
-    </ion-item>
-    
-    <ion-item>
-      <ion-label>Hospitalization</ion-label>
-      <ion-toggle [(ngModel)]="isToggled7" (ionChange)="notify()"></ion-toggle>
-    </ion-item>
-    <br />
-    <button ion-button block>Submit</button>
-    
-     
-    
+    <ion-list>
+      <ion-list-header>Events</ion-list-header> 
+      <ion-item *ngFor="let item of items">
+        <ion-label>{{item.title}}</ion-label>
+        <ion-toggle [(ngModel)]="values[item.id]" (ionChange)="valueChanged()"></ion-toggle>
+      </ion-item>
+    </ion-list>   
+  <button ion-button block (click)="submit()" [disabled]="!canSubmit">Submit</button>
 </ion-content>

@@ -1,0 +1,86 @@
+<!--
+  Generated template for the TreatmentNonCompliancePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Medication Non-compliance</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <img src="/assets/pills.jpg">
+  <ion-list>
+    <ion-item>
+      <ion-label>Date</ion-label>
+      <ion-datetime displayFormat="YYYY-MM-DD" [(ngModel)]="dateTime"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label>Time</ion-label>
+      <ion-datetime displayFormat="H:mm" [(ngModel)]="dateTime"></ion-datetime>
+    </ion-item>        
+  </ion-list>
+
+  <ion-card>
+      <ion-card-header>
+        Medications and compliance
+      </ion-card-header>        
+      <ion-card-content>
+        For each of the medications listed below specify your (non-)compliance:
+        <p><b>As prescribed</b> - you have taken the medication as prescribed</p>
+        <p><b>Forgot to take</b> - you have forgotten to take the medication</p>
+        <p><b>Decided not to take</b> - you have decided not to take the medication</p>
+      </ion-card-content>      
+    </ion-card>
+
+  <ion-list>
+    <ion-list-header>
+      Medications
+    </ion-list-header>
+    <ion-item *ngFor="let item of items">
+        <ion-thumbnail item-start><img [src]="item.imageUrl"></ion-thumbnail>
+        <ion-label>
+        <h2>{{item.title}}</h2>
+        <p>{{item.description}}</p>  
+        </ion-label>
+        <ion-select interface="popover" (ionChange)="valueChanged()" [(ngModel)]="values[item.id]">
+          <ion-option value="0">As prescribed</ion-option>
+          <ion-option value="-">Frogot to take</ion-option>
+          <ion-option value="!">Decided not to take</ion-option>
+        </ion-select>
+    
+    </ion-item>
+  </ion-list>
+  <!-- <ion-list>
+    <ion-item>
+      <ion-label>Medication</ion-label>
+      <ion-select [(ngModel)]="treatment" interface="popover">
+        <ion-option value="rhythm-control">Rhythm control</ion-option>
+        <ion-option value="rate-control">Rate control</ion-option>
+        <ion-option value="anticoagulant">Anticoagulation</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Problem</ion-label>
+      <ion-select [(ngModel)]="problem" interface="popover">
+        <ion-option value="missed-dose">Missed dose</ion-option>
+        <ion-option value="incorrect-dose">Incorrect dose</ion-option>
+      </ion-select>    
+    </ion-item>
+    <ion-item>
+        <ion-label>Reason</ion-label>
+        <ion-select [(ngModel)]="reason" interface="popover">
+          <ion-option value="side-effects">Side effects of the drug</ion-option>
+          <ion-option value="not-available">Drug not available</ion-option>
+          <ion-option value="negative-decision">Decided not to take the drug</ion-option>
+          <ion-option value="unsure">Not sure which durg to take</ion-option>
+        </ion-select>    
+      </ion-item>
+  </ion-list>   -->
+  <button ion-button block (click)="submit()" [disabled]="!canSubmit">Submit</button>  
+</ion-content>

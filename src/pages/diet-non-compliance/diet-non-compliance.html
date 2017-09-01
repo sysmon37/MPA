@@ -1,0 +1,79 @@
+<!--
+  Generated template for the DietNonCompliancePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Diet Non-compliance</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <img src="/assets/healthy-food.jpg">
+  <ion-list>
+    <ion-item>
+      <ion-label>Date</ion-label>
+      <ion-datetime displayFormat="YYYY-MM-DD" [(ngModel)]="dateTime"></ion-datetime>
+    </ion-item>        
+    <ion-item>
+      <ion-label>Meal</ion-label>
+      <ion-select [(ngModel)]="meal" interface="popover" (ionChange)="valueChanged()">
+        <ion-option value="breakfast">Breakfast</ion-option>
+        <ion-option value="lunch">Lunch</ion-option>
+        <ion-option value="dinner">Dinner</ion-option>
+        <ion-option value="supper">Supper</ion-option>                  
+      </ion-select>
+    </ion-item>
+  </ion-list>
+  <ion-card>
+    <ion-card-header>
+    Nutrients and their amounts
+    </ion-card-header>
+    <ion-card-content>
+      For each of the nutrients listed below specify its amount in comparison to the prescribed diet:
+      <p><b>More</b> - more than prescribed</p>
+      <p><b>Adequate</b> - as prescribed</p>
+      <p><b>Less</b> - less than prescribed</p>
+    </ion-card-content>      
+  </ion-card>
+  <ion-list>
+    <ion-list-header>
+      Nutrients
+    </ion-list-header>
+    <ion-item *ngFor="let item of items">
+      <ion-thumbnail item-start><img [src]="item.imageUrl"></ion-thumbnail>
+      <ion-label>{{item.title}}</ion-label>
+      <ion-select interface="popover" [(ngModel)]="values[item.id]" (ionChange)="valueChanged()">
+          <ion-option value="+">More</ion-option>
+          <ion-option value="0">Adequate</ion-option>
+          <ion-option value="-">Less</ion-option>
+      </ion-select>  
+    </ion-item>
+  </ion-list>
+  <!-- <ion-list>
+    <ion-item>
+      <ion-label>Nutrient</ion-label>
+      <ion-select [(ngModel)]="nutrient" interface="popover">
+        <ion-option value="spinach">Spinach</ion-option>
+        <ion-option value="broccoli">Broccoli</ion-option>
+        <ion-option value="endive">Endive (raw)</ion-option>
+        <ion-option value="sprouts">Brussels sprouts</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Amount</ion-label>
+      <ion-select [(ngModel)]="amount" interface="popover">
+        <ion-option value="++">Much higher</ion-option>
+        <ion-option value="+">Higher</ion-option>
+        <ion-option value="-">Lower</ion-option>
+        <ion-option value="--">Much lower</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list> -->
+  <button ion-button block (click)="submit()" [disabled]="!canSubmit">Submit</button>
+</ion-content>

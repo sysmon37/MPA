@@ -1,7 +1,10 @@
+import { SelfReevaluationPage } from './../self-reevaluation/self-reevaluation';
 import { ProsPage } from './../pros/pros';
 import { BarriersToEngagementPage } from './../barriers-to-engagement/barriers-to-engagement';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+
+import { BehaviorChange } from '../../enums/enums';
 
 /**
  * Generated class for the BehaviorChangePage page.
@@ -27,21 +30,23 @@ export class BehaviorChangePage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad BehaviorChangePage');
     this.items = [
-      {id: BehaviorChangePage.ID_EXPLORE, title: 'Pros of Engagement', disabled: 0, scenarios: [1, 2, 3], special: 0},
-
-      {id: BehaviorChangePage.ID_OTHER, title: 'Next Stage', disabled: 0, scenarios: [1, 2, 3], special: 1}
+      {id: BehaviorChange.ProsOfEngagement, title: 'Pros of Engagement', disabled: 0, scenarios: [1, 2, 3], special: 0},
+      {id: BehaviorChange.BarriersToEngagement, title: 'Barriers to Engagement', disabled: 0, scenarios: [2], special: 1},
+      {id: BehaviorChange.SelfReevaluation, title: 'Self-reevaluation', disabled: 0, scenarios: [2], special: 1}
     ];
 
   }
 
   openBehaviorChangeDetailPage(item) {
     switch (item.id) {
-      case BehaviorChangePage.ID_EXPLORE:
+      case BehaviorChange.ProsOfEngagement:
         this.navCtrl.push(ProsPage);
         break;
-        case BehaviorChangePage.ID_OTHER:
+      case BehaviorChange.BarriersToEngagement:
         this.navCtrl.push(BarriersToEngagementPage);
         break;
+      case BehaviorChange.SelfReevaluation:
+      this.navCtrl.push(SelfReevaluationPage);
     }
   }
 

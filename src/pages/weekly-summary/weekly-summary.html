@@ -1,0 +1,25 @@
+<!--
+  Generated template for the WeeklySummaryPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Weekly Summary</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-card *ngFor="let item of items">
+    <ion-card-content>
+      <ion-card-header [color]="item.color">
+          {{item.title}}
+      </ion-card-header>
+  </ion-card-content>
+    <img src="assets/bar-graph.png">
+  </ion-card>
+</ion-content>

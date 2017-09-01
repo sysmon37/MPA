@@ -1,10 +1,10 @@
+import { TreatmentNonCompliancePage } from './../treatment-non-compliance/treatment-non-compliance';
+import { DietNonCompliancePage } from './../diet-non-compliance/diet-non-compliance';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { RiskyEventsPage } from './../risky-events/risky-events';
 import { SymptomsPage } from './../symptoms/symptoms';
-import { WeekReportPage } from './../week-report/week-report';
-import { ReportingAdherencePage } from './../reporting-adherence/reporting-adherence';
 
 
 
@@ -22,6 +22,8 @@ import { ReportingAdherencePage } from './../reporting-adherence/reporting-adher
 })
 export class DailySummaryPage {
 
+  wellbeing : number = 0;
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
@@ -29,16 +31,25 @@ export class DailySummaryPage {
     console.log('ionViewDidLoad DailySummaryPage');
   }
     
-    openRisky(){
+    reportRiskyEvent() {
         this.navCtrl.push(RiskyEventsPage);
     }
     
-       openSymptoms(){
+    reportSymptoms() {
         this.navCtrl.push(SymptomsPage);
     }
     
-       openDiet(){
-        this.navCtrl.push(ReportingAdherencePage);
+    reportDietNonCompliance() {
+        this.navCtrl.push(DietNonCompliancePage);
+    }
+
+    reportTreatmentNonCompliance() {
+        this.navCtrl.push(TreatmentNonCompliancePage);
+    }
+
+    submit() {
+      this.navCtrl.pop();
+      console.log("wellbeing: " + this.wellbeing);
     }
 
 }

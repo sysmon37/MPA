@@ -5,81 +5,49 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
   <ion-navbar>
-    <ion-title>symptoms</ion-title>
+    <ion-title>Symptoms</ion-title>
   </ion-navbar>
-
 </ion-header>
 
-
 <ion-content padding>
-    <img src="../../assets/g7W6HRiSS5mJtKNr9tMJ_yeast-overgrowth-symptoms.jpg">
+    <img src="/assets/symptoms.jpg">
+    <ion-item>
+      <ion-label>Date</ion-label>
+      <ion-datetime displayFormat="YYYY-MM-DD" [(ngModel)]="dateTime"></ion-datetime>
+    </ion-item>        
      <ion-list>
         <ion-item>
-      <ion-label>All Day</ion-label>
-      <ion-toggle></ion-toggle>
-    </ion-item>
-        
+          <ion-label>All day</ion-label>
+          <ion-toggle [(ngModel)]="allDay"></ion-toggle>
+        </ion-item>        
         <ion-item>
-  <ion-label>Time</ion-label>
-  <ion-datetime displayFormat="HH:mm" [(ngModel)]="myDate"></ion-datetime>
-</ion-item>
-        
+          <ion-label>Time</ion-label>
+          <ion-datetime displayFormat="H:mm" [disabled]="allDay" [(ngModel)]="dateTime"></ion-datetime>
+        </ion-item>        
     </ion-list>
     
+    <ion-card>
+      <ion-card-header>
+        Symptoms and their intensity levels
+      </ion-card-header>        
+      <ion-card-content>
+        For each of the symptoms listed below specify its intensity level:
+        <p><b>Absent</b> - no pain or symptom at all</p>
+        <p><b>Acceptable</b> - the level of symptom or pain that is still bearable for you</p>
+        <p><b>Unacceptable</b> - high level of pain or any other symptom that prevents you to have a normal life</p>
+      </ion-card-content>      
+    </ion-card>
     <ion-list>
-        
-        
-    <ion-item>
-      <ion-label>Palpitation</ion-label>
-      <ion-select [(ngModel)]="Palpitation">
-        <ion-option value="ab">Absent</ion-option>
-        <ion-option value="ac">Acceptable</ion-option>
-          <ion-option value="unac">Unacceptable</ion-option>
-      </ion-select>
-    </ion-item>
-        
-        <ion-item>
-      <ion-label>Chest Pain</ion-label>
-      <ion-select [(ngModel)]="ChestPain">
-        <ion-option value="ab">Absent</ion-option>
-        <ion-option value="ac">Acceptable</ion-option>
-          <ion-option value="unac">Unacceptable</ion-option>
-      </ion-select>
-    </ion-item>
-        
-        <ion-item>
-      <ion-label>Dyspnea</ion-label>
-      <ion-select [(ngModel)]="Dyspnea">
-        <ion-option value="ab">Absent</ion-option>
-        <ion-option value="ac">Acceptable</ion-option>
-          <ion-option value="unac">Unacceptable</ion-option>
-      </ion-select>
-    </ion-item>
-        
-        <ion-item>
-      <ion-label>Fatigue</ion-label>
-      <ion-select [(ngModel)]="Fatigue">
-        <ion-option value="ab">Absent</ion-option>
-        <ion-option value="ac">Acceptable</ion-option>
-          <ion-option value="unac">Unacceptable</ion-option>
-      </ion-select>
-    </ion-item>
-        
-        <ion-item>
-      <ion-label>Lightheadness</ion-label>
-      <ion-select [(ngModel)]="Lightheadness">
-        <ion-option value="ab">Absent</ion-option>
-        <ion-option value="ac">Acceptable</ion-option>
-          <ion-option value="unac">Unacceptable</ion-option>
-      </ion-select>
-    </ion-item>
-   
-        
-        
-    </ion-list>
-    
-    <button ion-button block>Submit</button>
-
+      <ion-list-header>Symptoms</ion-list-header>           
+      <ion-item  *ngFor="let item of items">
+        <ion-label>{{item.title}}</ion-label>
+        <ion-select [(ngModel)]="values[item.id]" (ionChange)="valueChanged()">
+          <ion-option value="0">Absent</ion-option>
+          <ion-option value="-">Acceptable</ion-option>
+          <ion-option value="!">Unacceptable</ion-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>    
+    <button ion-button block (click)="submit()" [disabled]="!canSubmit">Submit</button>
 </ion-content>

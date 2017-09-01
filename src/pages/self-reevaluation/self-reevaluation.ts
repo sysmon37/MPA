@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 /**
- * Generated class for the WeekReportPage page.
+ * Generated class for the SelfReevaluationPage page.
  *
  * See http://ionicframework.com/docs/components/#navigation for more info
  * on Ionic pages and navigation.
@@ -10,16 +10,16 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-week-report',
-  templateUrl: 'week-report.html',
+  selector: 'page-self-reevaluation',
+  templateUrl: 'self-reevaluation.html',
 })
-export class WeekReportPage {
+export class SelfReevaluationPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad WeekReportPage');
+    console.log('ionViewDidLoad SelfReevaluationPage');
   }
 
 }

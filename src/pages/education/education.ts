@@ -20,7 +20,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 
 export class EducationPage {
-  groupedItems = [];
+  itemGroups = [];
   static readonly ID_INTERVIEW = 1;
   static readonly ID_OTHER = 2;
   static readonly ID_FAQ = 3;
@@ -29,7 +29,7 @@ export class EducationPage {
   static readonly ID_MANUAL = 6;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.groupedItems = [
+    this.itemGroups = [
       { 
         title: 'Lifestyle',
         items: [
@@ -76,7 +76,7 @@ export class EducationPage {
       }      
     ];
 
-    for(let group of this.groupedItems) {
+    for(let group of this.itemGroups) {
       for (let item of group.items) 
         if (item.alternativeTitle === undefined) item.alternativeTitle = group.title;      
     }

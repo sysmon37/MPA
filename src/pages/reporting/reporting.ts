@@ -1,11 +1,14 @@
+import { WeeklySummaryPage } from './../weekly-summary/weekly-summary';
+import { TreatmentNonCompliancePage } from './../treatment-non-compliance/treatment-non-compliance';
+import { DietNonCompliancePage } from './../diet-non-compliance/diet-non-compliance';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-import { ReportingAdherencePage } from './../reporting-adherence/reporting-adherence';
 import { RiskyEventsPage } from './../risky-events/risky-events';
 import { SymptomsPage } from './../symptoms/symptoms';
-import { WeekReportPage } from './../week-report/week-report';
 import { DailySummaryPage } from './../daily-summary/daily-summary';
+
+import { Report } from '../../enums/enums';
 
 /**
  * Generated class for the ReportingPage page.
@@ -21,26 +24,32 @@ import { DailySummaryPage } from './../daily-summary/daily-summary';
 })
 export class ReportingPage {
 
-  static readonly ID_DIET_NON_COMPLIANCE = 1;
-  static readonly ID_TREATMENT_NON_COMPLIANCE = 2;
-  static readonly ID_RISKY_EVENT = 3;
-  static readonly ID_SYMPTOMS = 4;
-    static readonly ID_REPORTING_ADHERENCE = 5;
-    static readonly ID_DAILY_SUMMARY = 6;
-    static readonly ID_WEEK_REPORT = 7;
-  items = [];
+  itemGroups = [];
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-      this.items = [
-      {id: ReportingPage.ID_DIET_NON_COMPLIANCE, title: 'Diet Non-compliance', disabled: 0, scenarios: [1, 2, 3], special: 0},
-      {id: ReportingPage.ID_TREATMENT_NON_COMPLIANCE, title: 'Treatment Non-compliance', disabled: 0, scenarios: [2, 3], special: 0},
-      {id: ReportingPage.ID_RISKY_EVENT, title: 'Risky Events', disabled: 0, scenarios: [1, 2, 3], special: 1},
-          {id: ReportingPage.ID_SYMPTOMS, title: 'Symptoms', disabled: 0, scenarios: [1, 2, 3], special: 1},
-          {id: ReportingPage.ID_REPORTING_ADHERENCE, title: 'Reporting Adherence', disabled: 0, scenarios: [1, 2, 3], special: 1},
-      {id: ReportingPage.ID_DAILY_SUMMARY, title: 'Daily Summary', disabled: 0, scenarios: [1, 2, 3], special: 1},
-          {id: ReportingPage.ID_WEEK_REPORT, title: 'Week Report', disabled: 0, scenarios: [1, 2, 3], special: 1}
+    this.itemGroups = [
+      { 
+        title: 'Diet and Medication Non-compliance', 
+        items: [      
+          {id: Report.DietNonCompliance, title: 'Diet Non-compliance', disabled: 0, scenarios: [1, 2, 3], special: 0},
+          {id: Report.TreatmentNonCompliance, title: 'Medication Non-compliance', disabled: 0, scenarios: [2, 3], special: 0}
+        ]
+      },
+      {
+        title: 'Symptoms and Risky Events',
+        items: [
+          {id: Report.Symptoms, title: 'Symptoms', disabled: 0, scenarios: [1, 2, 3], special: 0},
+          {id: Report.RiskyEvents, title: 'Risky Events', disabled: 0, scenarios: [1, 2, 3], special: 0}    
+        ]
+      },
+      {
+        title: 'Daily and Weekly Summaries',
+        items: [
+          {id: Report.DailySummary, title: 'Daily Summary', disabled: 0, scenarios: [1, 2, 3], special: 1},
+          {id: Report.WeeklySummary, title: 'Weekly Summary', disabled: 0, scenarios: [1, 2, 3], special: 1}    
+        ]
+      }
     ];
-
   }
 
   ionViewDidLoad() {
@@ -50,27 +59,24 @@ export class ReportingPage {
   openReportingDetailPage(item) {
       
       switch (item.id) {
-        case ReportingPage.ID_RISKY_EVENT:
-       this.navCtrl.push(RiskyEventsPage);
-       break;
-         
-        case ReportingPage.ID_REPORTING_ADHERENCE:
-       this.navCtrl.push(ReportingAdherencePage);
-       break;
-      
-        case ReportingPage.ID_SYMPTOMS:
-       this.navCtrl.push(SymptomsPage);
-       break;
-       
-        case ReportingPage.ID_WEEK_REPORT:
-       this.navCtrl.push(WeekReportPage);
-       break;
-    
-        case ReportingPage.ID_DAILY_SUMMARY:
-       this.navCtrl.push(DailySummaryPage);
-       break;
-      
-      
+        case Report.RiskyEvents:
+          this.navCtrl.push(RiskyEventsPage);
+        break;         
+        case Report.DietNonCompliance:
+          this.navCtrl.push(DietNonCompliancePage);
+          break;
+        case Report.TreatmentNonCompliance:
+          this.navCtrl.push(TreatmentNonCompliancePage);
+          break;
+        case Report.Symptoms:
+          this.navCtrl.push(SymptomsPage);
+          break;
+        case Report.WeeklySummary:
+          this.navCtrl.push(WeeklySummaryPage);
+          break;
+        case Report.DailySummary:
+          this.navCtrl.push(DailySummaryPage);
+          break;
   }
 
 }

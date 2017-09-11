@@ -35,10 +35,10 @@
     Nutrients and their amounts
     </ion-card-header>
     <ion-card-content>
-      For each of the nutrients listed below specify its amount in comparison to the prescribed diet:
-      <p><b>More</b> - more than prescribed</p>
-      <p><b>Adequate</b> - as prescribed</p>
-      <p><b>Less</b> - less than prescribed</p>
+      For each of the nutrients listed below specify its amount in comparison to your usual consumption:
+      <p><b>More</b> - more than usual</p>
+      <p><b>As usual</b> - as usual</p>
+      <p><b>Less</b> - less than usual</p>
     </ion-card-content>      
   </ion-card>
   <ion-list>
@@ -50,7 +50,7 @@
       <ion-label>{{item.title}}</ion-label>
       <ion-select interface="popover" [(ngModel)]="values[item.id]" (ionChange)="valueChanged()">
           <ion-option value="+">More</ion-option>
-          <ion-option value="0">Adequate</ion-option>
+          <ion-option value="0">As usual</ion-option>
           <ion-option value="-">Less</ion-option>
       </ion-select>  
     </ion-item>

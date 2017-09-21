@@ -23,8 +23,9 @@ export class DietNonCompliancePage {
 
   items : any = [];
   values : string[] = [];
+  value : string = '?';
 
-  canSubmit : boolean = false;
+  canSubmit : boolean = true;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.items = [
@@ -42,15 +43,17 @@ export class DietNonCompliancePage {
     this.dateTime = new Date().toISOString();
   }
 
-  valueChanged() {
-    this.canSubmit = false;
-    if (this.meal != '')
-      for (let v of this.values)
-      if (v != "0") {
-        this.canSubmit = true;
-        break;
-      }
-      console.log("valueChanged - canSubmit:" + this.canSubmit);
+  valueChanged(value) {
+    this.value = value;
+    console.log(this.value);
+    // this.canSubmit = false;
+    // if (this.meal != '')
+    //   for (let v of this.values)
+    //   if (v != "0") {
+    //     this.canSubmit = true;
+    //     break;
+    //   }
+    //   console.log("valueChanged - canSubmit:" + this.canSubmit);
     }
 
   submit() {

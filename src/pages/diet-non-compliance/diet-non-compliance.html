@@ -7,20 +7,20 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Diet Non-compliance</ion-title>
+    <ion-title>Diet Compliance</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-    <img src="/assets/healthy-food.jpg">
-  <ion-list>
+    <img src="/assets/vitamin-k.jpg">
+  <ion-list no-lines>
     <ion-item>
       <ion-label>Date</ion-label>
       <ion-datetime displayFormat="YYYY-MM-DD" [(ngModel)]="dateTime"></ion-datetime>
     </ion-item>        
-    <ion-item>
+    <!-- <ion-item>
       <ion-label>Meal</ion-label>
       <ion-select [(ngModel)]="meal" interface="popover" (ionChange)="valueChanged()">
         <ion-option value="breakfast">Breakfast</ion-option>
@@ -28,9 +28,9 @@
         <ion-option value="dinner">Dinner</ion-option>
         <ion-option value="supper">Supper</ion-option>                  
       </ion-select>
-    </ion-item>
+    </ion-item> -->
   </ion-list>
-  <ion-card>
+  <!-- <ion-card>
     <ion-card-header>
     Nutrients and their amounts
     </ion-card-header>
@@ -40,19 +40,17 @@
       <p><b>As usual</b> - as usual</p>
       <p><b>Less</b> - less than usual</p>
     </ion-card-content>      
-  </ion-card>
+  </ion-card> -->
   <ion-list>
     <ion-list-header>
-      Nutrients
+      Vitamin K
     </ion-list-header>
-    <ion-item *ngFor="let item of items">
-      <ion-thumbnail item-start><img [src]="item.imageUrl"></ion-thumbnail>
-      <ion-label>{{item.title}}</ion-label>
-      <ion-select interface="popover" [(ngModel)]="values[item.id]" (ionChange)="valueChanged()">
-          <ion-option value="+">More</ion-option>
-          <ion-option value="0">As usual</ion-option>
-          <ion-option value="-">Less</ion-option>
-      </ion-select>  
+    <ion-item>
+      <ion-label>Taken amount</ion-label>
+      <button ion-button item-end [outline]="value!='+'" small color=danger icon-only (click)="valueChanged('+')"><ion-icon name="arrow-round-up"></ion-icon></button>
+      <button ion-button item-end [outline]="value!='0'" small color=safe icon-only (click)="valueChanged('0')"><ion-icon name="checkmark"></ion-icon></button>      
+      <button ion-button item-end [outline]="value!='-'" small color=danger icon-only (click)="valueChanged('-')"><ion-icon name="arrow-round-down"></ion-icon></button>
+    
     </ion-item>
   </ion-list>
   <!-- <ion-list>

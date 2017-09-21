@@ -13,7 +13,7 @@ import { Storage } from '@ionic/storage';
 
 export class HomePage {
 
-  private showIntro : boolean = true;
+  private showIntro : boolean = false;
 
   constructor(public navCtrl: NavController, private storage: Storage) {
 

@@ -33,11 +33,11 @@
     "sw-toolbox": "3.6.0",
     "zone.js": "0.8.12",
     "@ionic/app-scripts": "^2.1.4",
-    "typescript": "2.3.4"    
+    "typescript": "2.3.4"
   },
   "devDependencies": {
     "@ionic/app-scripts": "^2.1.4",
-    "ionic": "3.9.2",
+    "ionic": "3.10.3",
     "typescript": "2.3.4"
   },
   "description": "Mock-up of the MPA system"

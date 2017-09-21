@@ -24,23 +24,22 @@ export class SymptomsPage {
   items : any[] = null;
   values : string[] = Array();
 
-  canSubmit : boolean = false;
+  canSubmit : boolean = true;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.items = [
       {id: Symptom.Palpitation, title: 'Palpitation'},
       {id: Symptom.ChestPain, title: 'Chest pain'},
       {id: Symptom.Dyspnea, title: 'Shortness of breath'},
-      {id: Symptom.Fatigue, title: 'Fatigue'},
-      {id: Symptom.Lightheadedness, title: 'Lightheadedness'}
+      // {id: Symptom.Fatigue, title: 'Fatigue'},
+      // {id: Symptom.Lightheadedness, title: 'Lightheadedness'}
     ];
     for (let i in this.items)
-      this.values[i] = '0';
+      this.values[i] = '?';
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SymptomsPage');
-    console.log(this.values);
 
     this.dateTime = new Date().toISOString();
   }
@@ -50,12 +49,15 @@ export class SymptomsPage {
     console.log("dateTime:" + this.dateTime);
   }
 
-  valueChanged() {
-    this.canSubmit = false;
-    for (let v of this.values)
-      if (v != "0") {
-        this.canSubmit = true;
-        break;
-      }
+  valueChanged(id, value) {
+    this.values[id] = value;
+    console.log(this.values);
+    
+    // this.canSubmit = false;
+    // for (let v of this.values)
+    //   if (v != "0") {
+    //     this.canSubmit = true;
+    //     break;
+    //   }
   }
 }

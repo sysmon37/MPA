@@ -29,10 +29,10 @@ export class ReportingPage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.itemGroups = [
       { 
-        title: 'Diet and Medication Non-compliance', 
+        title: 'Diet and Medication Compliance', 
         items: [      
-          {id: Report.DietNonCompliance, title: 'Diet Non-compliance', disabled: 0, scenarios: [1, 2, 3], special: 0},
-          {id: Report.TreatmentNonCompliance, title: 'Medication Non-compliance', disabled: 0, scenarios: [2, 3], special: 0}
+          {id: Report.DietNonCompliance, title: 'Diet Compliance', disabled: 0, scenarios: [1, 2, 3], special: 0},
+          {id: Report.TreatmentNonCompliance, title: 'Medication Compliance', disabled: 0, scenarios: [2, 3], special: 0}
         ]
       },
       {

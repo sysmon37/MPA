@@ -15,135 +15,72 @@
 
 <ion-content padding>
     
-    <img src="../../assets/OdSlHKsSTbWziDcKsXQH_shutterstock_175331306-300x200.jpg">
-    <br />
+    <!-- <img src="../../assets/OdSlHKsSTbWziDcKsXQH_shutterstock_175331306-300x200.jpg">
+    <br /> -->
     
-    <ion-list>
-        <ion-item>
-          <ion-label>Overall Wellbeing</ion-label>
-          <ion-range [(ngModel)]="wellbeing" min="-2" max="2" steps=5>  
-            <ion-icon range-left name="cloudy"></ion-icon>
-            <ion-icon range-right name="sunny"></ion-icon>
-          </ion-range>            
-        </ion-item>
-      </ion-list>
-
-    <ion-list>      
-    <ion-item-divider color="light">
-        INR
-      <ion-note item-end>
-        Number
-      </ion-note>
-    </ion-item-divider>
-
-  </ion-list>
-    
-  <ion-list>
+  <ion-list no-lines>
     <ion-list-header>
-      Reported Symptoms
-        <button ion-button item-right icon-left color="secondary" (click)="reportSymptoms()"><ion-icon name="add-circle"></ion-icon>Add</button>
+      How do you feel today?        
     </ion-list-header>
-    <ion-item-divider color="light">
-        Symptom 1
-     
-      <ion-note item-end>
-        Time
-      </ion-note>
-    </ion-item-divider>
-            <ion-item-divider color="light">
-        Symptom 2
-     
-      <ion-note item-end>
-        Time
-      </ion-note>
-    </ion-item-divider>
-            <ion-item-divider color="light">
-        Symptom 3
-     
-      <ion-note item-end>
-        Time
-      </ion-note>
-    </ion-item-divider>
+    <ion-item>
+      <ion-range [(ngModel)]="wellbeing" min="-2" max="2" steps=5>  
+        <ion-icon range-left name="cloudy"></ion-icon>
+        <ion-icon range-right name="sunny"></ion-icon>
+      </ion-range>            
+    </ion-item>
   </ion-list>
-    
-    <ion-list>
-        <ion-list-header>
-          Reported Risky Events
-          <button ion-button item-right icon-left color="secondary" (click)="reportRiskyEvent()"><ion-icon name="add-circle"></ion-icon>Add</button>
-        </ion-list-header>
-    <ion-item-divider color="light">
-        Event 1
-     
-      <ion-note item-end>
-        Time
-      </ion-note>
-    </ion-item-divider>
-            <ion-item-divider color="light">
-        Event 2
-     
-      <ion-note item-end>
-        Time
-      </ion-note>
-    </ion-item-divider>
 
+  <ion-list no-lines>
+    <ion-list-header>
+      Daily engagement
+    </ion-list-header>
+    <ion-item>
+      <ion-icon *ngFor="let star of stars" [name]="star ? 'star' : 'star-outline'" item-first color='light_green' style='font-size:38px'></ion-icon>
+      <button ion-button item-end clear icon-end style="font-size:16px" (click)="improveEngagement()">
+        Improve
+        <ion-icon name="arrow-round-forward"></ion-icon>
+      </button>
+    </ion-item>
   </ion-list>
-    
-    <ion-list>
-        <ion-list-header>
-          Reported Diet Non-compliance
-          <button ion-button item-right icon-left color="secondary" (click)="reportDietNonCompliance()"><ion-icon name="add-circle"></ion-icon>Add</button>
-        </ion-list-header>
-    <ion-item-divider color="light">
-        Nutrient 1
-     
-      <ion-note item-end>
-        Amount
-      </ion-note>
-    </ion-item-divider>
-            <ion-item-divider color="light">
-        Nutrient 2
-     
-      <ion-note item-end>
-        Amount
-      </ion-note>
-    </ion-item-divider>
-            <ion-item-divider color="light">
-        Nutrient 3
-     
-      <ion-note item-end>
-        Amount
-      </ion-note>
-    </ion-item-divider>
+
+  <ion-list no-lines *ngIf="showDrugs">
+    <ion-list-header>
+      Right dosage taken
+    </ion-list-header>
+    <ion-item *ngFor="let item of drugs">
+      <ion-thumbnail item-start><img [src]="item.imageUrl"></ion-thumbnail>
+      <ion-label><h2>{{item.title}}</h2><p>{{item.description}}</p></ion-label>        
+      <button *ngFor="let dose of item.doses" ion-button item-end small [color]="color(dose.value, DRUG)">
+        <ion-icon [name]="iconName(dose.value, DRUG)" large></ion-icon>
+      </button>
+    </ion-item>
   </ion-list>
-    
-    <ion-list>
-        <ion-list-header>
-          Reported Medication Non-compliance
-          <button ion-button item-right icon-left color="secondary" (click)="reportTreatmentNonCompliance()"><ion-icon name="add-circle"></ion-icon>Add</button>
-      </ion-list-header>        
-    <ion-item-divider color="light">
-        Drug 1
-     
-      <ion-note item-end>
-        Dosage
-      </ion-note>
-    </ion-item-divider>
-            <ion-item-divider color="light">
-        Drug 2
-     
-      <ion-note item-end>
-        Dosage
-      </ion-note>
-    </ion-item-divider>
-            <ion-item-divider color="light">
-        Drug 3
-     
-      <ion-note item-end>
-        Dosage
-      </ion-note>
-    </ion-item-divider>
+
+  <ion-list no-lines *ngIf="showNutrients">
+    <ion-list-header>
+      Right amount eaten
+    </ion-list-header>
+    <ion-item *ngFor="let item of nutrients" [hidden]="item.value=='?'">
+      <ion-label>{{item.title}}</ion-label>        
+      <button ion-button item-end small [color]="color(item.value, NUTRIENT)">
+        <ion-icon [name]="iconName(item.value, NUTRIENT)" large></ion-icon>
+      </button>    
+    </ion-item>
+  </ion-list>  
+
+  <ion-list no-lines *ngIf="showSymptoms">
+    <ion-list-header>
+      Symptoms today
+    </ion-list-header>
+    <ion-item *ngFor="let item of symptoms" [hidden]="item.value=='?'">
+      <ion-label>{{item.title}}</ion-label>        
+      <button ion-button item-end small [color]="color(item.value, SYMPTOM)">
+        <ion-icon [name]="iconName(item.value, SYMPTOM)" large></ion-icon>
+      </button>    
+  
+    </ion-item>
   </ion-list>
-    
-    <button ion-button block (click)="submit()">Submit</button>
+
+  <button ion-button block (click)="submit()">Submit</button>
     
 </ion-content>

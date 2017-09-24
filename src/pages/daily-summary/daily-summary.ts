@@ -1,11 +1,10 @@
-import { TreatmentNonCompliancePage } from './../treatment-non-compliance/treatment-non-compliance';
-import { DietNonCompliancePage } from './../diet-non-compliance/diet-non-compliance';
+import { DataProvider } from './../../providers/data/data';
+import { ImprovementPage } from './../improvement/improvement';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-import { RiskyEventsPage } from './../risky-events/risky-events';
-import { SymptomsPage } from './../symptoms/symptoms';
-
+import { Treatment } from '../../enums/enums';
+import { Symptom } from '../../enums/enums';
+import { Nutrient } from '../../enums/enums';
 
 
 /**
@@ -23,33 +22,138 @@ import { SymptomsPage } from './../symptoms/symptoms';
 export class DailySummaryPage {
 
   wellbeing : number = 0;
+  drugs : any  = [];
+  symptoms : any = [];
+  nutrients : any = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  showDrugs : boolean = true;
+  showSymptoms : boolean = true;
+  showNutrients : boolean = true;
+
+  engagementScore : number = 0;
+
+  stars : boolean[] = [false, false, false, false, false, false];
+
+  readonly DRUG : string = 'drug';
+  readonly SYMPTOM : string = 'symptom';
+  readonly NUTRIENT : string = 'nutrient';
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public dataService: DataProvider) {
+      this.drugs = [
+          {id: Treatment.Anticoagulant, title: "Warfarin", description: 'Oral tablet, 5 mg, 1 x daily', imageUrl: '/assets/warfarin-1x.jpg', value: '', doses: [{value: '?'}]},
+          {id: Treatment.RateControl, title: "Metoprolol", description: 'Oral tablet, 25 mg, 2 x daily', imageUrl: '/assets/metoprolol-2x.jpg', value: '', doses: [{value: '?'}, {value:'?'}]}
+      ];
+
+      this.symptoms = [
+        {id: Symptom.Palpitation, title: 'Palpitation', value: '?'},
+        {id: Symptom.ChestPain, title: 'Chest pain', value: '?'},
+        {id: Symptom.Dyspnea, title: 'Shortness of breath', value: '?'},  
+      ];
+
+      this.nutrients = [
+        {id: Nutrient.VitaminK, title: 'Vitamin K', value: '?'}
+      ];
+
+      this.dataService.getDrugs().then((data) => this.dataService.unpackMultiValues(data, this.drugs));
+      this.dataService.getSymptoms().then((data) => this.dataService.unpackValues(data, this.symptoms));
+      this.dataService.getNutrients().then((data) => this.dataService.unpackValues(data, this.nutrients));      
+
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad DailySummaryPage');
   }
-    
-    reportRiskyEvent() {
-        this.navCtrl.push(RiskyEventsPage);
-    }
-    
-    reportSymptoms() {
-        this.navCtrl.push(SymptomsPage);
-    }
-    
-    reportDietNonCompliance() {
-        this.navCtrl.push(DietNonCompliancePage);
-    }
 
-    reportTreatmentNonCompliance() {
-        this.navCtrl.push(TreatmentNonCompliancePage);
-    }
-
+  ionViewDidEnter(){
+    this.updateVisibility();    
+    this.updateEngagementScore();
+  }
+    
     submit() {
-      this.navCtrl.pop();
-      console.log("wellbeing: " + this.wellbeing);
+        this.navCtrl.pop();
+        console.log("wellbeing: " + this.wellbeing);
+
+        this.dataService.setDrugs(this.dataService.packMultiValues(this.drugs));
+        this.dataService.setSymptoms(this.dataService.packValues(this.symptoms));
+        this.dataService.setNutrients(this.dataService.packValues(this.nutrients));
     }
 
+    iconName(value, type) {
+        let name = '';
+        if (value == '' || value == '?')
+            name = 'help';
+        else
+            switch (type) {
+                case this.DRUG:
+                    name = value == '+' ? 'checkmark' : 'close';
+                    break;
+                case this.SYMPTOM:
+                    name = value == '+' ? 'add' : 'remove';
+                    break;
+                case this.NUTRIENT:
+                    name = value == '+' ? 'arrow-round-up' : value == '-' ? 'arrow-round-down' : 'checkmark';
+            }
+        return name;
+    }
+
+    color(value, type) {
+        let color = '';
+        if (value == '?' || value == '')
+            color = 'unknown';
+        else
+            switch (type) {
+                case this.DRUG:
+                    color = value == '+' ? 'safe' : 'danger';
+                    break;
+                case this.SYMPTOM:
+                    color = 'light_blue';
+                    break;
+                case this.NUTRIENT:
+                    color = value == '=' ? 'safe' : 'danger';                    
+        }
+        return color;
+    }
+
+    updateVisibility() {
+        this.showDrugs = false;
+        for (let dr of this.drugs) {
+            dr.value = '?';
+            for (let d of dr.doses) {
+                if (d.value != '?') dr.value = '*';
+            }
+            if (dr.value != '?') this.showDrugs = true;
+        }
+
+        this.showSymptoms = false;
+        for (let s of this.symptoms) {
+            if (s.value != '?') this.showSymptoms = true;
+        }
+
+        this.showNutrients = false;
+        for (let n of this.nutrients) {
+            if (n.value != '?') this.showNutrients = true;
+        }
+    }
+
+    updateEngagementScore() {
+        this.engagementScore = 0;
+        for (let dr of this.drugs) 
+            for (let d of dr.doses) 
+                if (d.value == '+') 
+                    this.engagementScore++;
+        for (let n of this.nutrients)
+            if (n.value == '=') 
+            this.engagementScore++;
+        for (let s of this.symptoms)
+            if (s.value != '?') {
+                this.engagementScore++;
+                break;
+            }
+        for (let i in this.stars)
+            this.stars[i] = +i < this.engagementScore;
+    }
+
+    improveEngagement() {
+        this.navCtrl.push(ImprovementPage, {drugs: this.drugs, nutrients: this.nutrients, symptoms: this.symptoms});
+    }
 }

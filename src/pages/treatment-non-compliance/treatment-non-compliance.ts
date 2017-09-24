@@ -1,3 +1,4 @@
+import { DataProvider } from './../../providers/data/data';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Treatment } from '../../enums/enums';
@@ -16,23 +17,26 @@ import { Treatment } from '../../enums/enums';
 })
 export class TreatmentNonCompliancePage {
 
-  dateTime : string;
-  treatment : string;
+  dateTime: string;
+  treatment: string;
   // problem : string;
   // reason : string;
 
-  items : any = [];
-  values : string[] = [];
-  canSubmit : boolean = false;
+  items: any = [];
+  canSubmit: boolean = true;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public dataService: DataProvider) {
     this.items = [
-      {id: Treatment.Anticoagulant, title: 'Warfarin', description: 'Oral tablet, 5 mg, 1 x daily', imageUrl: '/assets/warfarin-5mg.jpg'},
-      {id: Treatment.RateControl, title: 'Metoprolol', description: 'Oral tablet, 25 mg, 2 x daily', imageUrl: '/assets/metoprolol-25mg.jpg'}
+      {id: Treatment.Anticoagulant, title: "Warfarin", description: 'Oral tablet, 5 mg', imageUrl: '/assets/warfarin-1x.jpg', value: '', doses: [{value: '?'}]},
+      {id: Treatment.RateControl, title: "Metoprolol", description: 'Oral tablet, 25 mg', imageUrl: '/assets/metoprolol-1x.jpg', value: '', doses: [{value: '?'}, {value:'?'}]}
     ];
 
-    for (let i in this.items)
-      this.values[i] = '0';
+    this.dataService.getDrugs().then((data) => {
+      console.log(data);
+      this.dataService.unpackMultiValues(data, this.items);
+      console.log("Reading drugs");
+      this.logValues();
+    });    
   }
 
   ionViewDidLoad() {
@@ -40,19 +44,28 @@ export class TreatmentNonCompliancePage {
     this.dateTime = new Date().toISOString();
   }
 
-  valueChanged() {
-    this.canSubmit = false;
-    for (let v of this.values)
-      if (v != '0') {
-        this.canSubmit = true;
-        break;
-      }
+  valueChanged(item, value) {
+    item.value = item.value == value ? '?' : value;
+    console.log(item);
   }
 
   submit() {
-    console.log(this.values);
     this.navCtrl.pop();
-
+    let values = this.dataService.packMultiValues(this.items);
+    console.log("Saving drugs " + values);
+    this.dataService.setDrugs(values);
   }
 
+  logValues() {
+    for (let item of this.items) {
+      this.logValue(item);
+    }
+  }
+  
+  logValue(item) {
+    let s = "";
+    for (let d of item.doses)
+      s = s + d.value + " ";
+    console.log(item.id + "|" + item.title + " = " + s);    
+  }  
 }

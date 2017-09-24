@@ -11,7 +11,7 @@
 </ion-header>
 
 <ion-content padding>
-    <img src="/assets/symptoms.jpg">
+    <!-- <img src="/assets/symptoms.jpg"> -->
     <ion-list no-lines>
       <ion-item>
         <ion-label>Date</ion-label>
@@ -19,28 +19,12 @@
       </ion-item>        
     </ion-list>
       
-    <!-- <ion-card>
-      <ion-card-header>
-        Symptoms and their intensity levels
-      </ion-card-header>        
-      <ion-card-content>
-        For each of the symptoms listed below specify its intensity level:
-        <p><b>Absent</b> - no pain or symptom at all</p>
-        <p><b>Acceptable</b> - the level of symptom or pain that is still bearable for you</p>
-        <p><b>Unacceptable</b> - high level of pain or any other symptom that prevents you to have a normal life</p>
-      </ion-card-content>      
-    </ion-card> -->
     <ion-list no-lines>
-      <ion-list-header>Acute Symptoms</ion-list-header>           
+      <ion-list-header>Have you experienced?</ion-list-header>           
       <ion-item  *ngFor="let item of items" radio-group>
         <ion-label>{{item.title}}</ion-label>
-        <button ion-button item-end [outline]="values[item.id]!='+'" small color=danger icon-only (click)="valueChanged(item.id, '+')"><ion-icon name="add"></ion-icon></button>
-        <button ion-button item-end [outline]="values[item.id]!='-'" small color=safe icon-only (click)="valueChanged(item.id, '-')"><ion-icon name="remove"></ion-icon></button>
-        <!-- <ion-select [(ngModel)]="values[item.id]" (ionChange)="valueChanged()">
-          <ion-option value="0">Absent</ion-option>
-          <ion-option value="-">Acceptable</ion-option>
-          <ion-option value="!">Unacceptable</ion-option>
-        </ion-select> -->
+        <button ion-button item-end [outline]="item.value!='+'" small color=danger icon-only (click)="valueChanged(item, '+')"><ion-icon name="add"></ion-icon></button>
+        <button ion-button item-end [outline]="item.value!='-'" small color=safe icon-only (click)="valueChanged(item, '-')"><ion-icon name="remove"></ion-icon></button>
       </ion-item>
     </ion-list>    
     <button ion-button block (click)="submit()" [disabled]="!canSubmit">Submit</button>

@@ -1,3 +1,4 @@
+import { ImprovementPage } from './../pages/improvement/improvement';
 import { SelfReevaluationPage } from './../pages/self-reevaluation/self-reevaluation';
 import { WeeklySummaryPage } from './../pages/weekly-summary/weekly-summary';
 import { TreatmentNonCompliancePage } from './../pages/treatment-non-compliance/treatment-non-compliance';
@@ -30,6 +31,7 @@ import { DailySummaryPage } from './../pages/daily-summary/daily-summary';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { DataProvider } from '../providers/data/data';
 
 @NgModule({
   declarations: [
@@ -54,7 +56,8 @@ import { HomePage } from '../pages/home/home';
     BarriersToEngagementPage,
     SelfReevaluationPage,
     DietNonCompliancePage,
-    TreatmentNonCompliancePage
+    TreatmentNonCompliancePage,
+    ImprovementPage
   ],
   imports: [
     BrowserModule,
@@ -84,12 +87,14 @@ import { HomePage } from '../pages/home/home';
     BarriersToEngagementPage,
     SelfReevaluationPage,
     DietNonCompliancePage,
-    TreatmentNonCompliancePage
+    TreatmentNonCompliancePage,
+    ImprovementPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    DataProvider
   ]
 })
 export class AppModule {} 

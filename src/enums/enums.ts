@@ -19,16 +19,17 @@ export enum RiskyEvent {
 export enum Symptom {
     Palpitation = 0, 
     ChestPain, 
-    Dyspnea, 
-    Fatigue, 
-    Lightheadedness
+    Dyspnea
+    // Fatigue, 
+    // Lightheadedness
 };
 
 export enum Nutrient {
     Broccoli = 0,
     Endive,
     Spinach,
-    Sprouts
+    Sprouts,
+    VitaminK = 0
 };
 
 export enum Treatment {
@@ -42,3 +43,9 @@ export enum BehaviorChange {
     BarriersToEngagement,
     SelfReevaluation
 };
+
+export enum Dose {
+    First = 0,
+    Second = 1
+};
+

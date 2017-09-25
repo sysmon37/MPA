@@ -14,12 +14,30 @@
 
 
 <ion-content padding>
-  <ion-card *ngFor="let item of items">
+  <ion-card>
+    <ion-card-header>
+      Your Overall Feeling
+    </ion-card-header>
+    <ion-card-content>
+      <canvas #overallCanvas></canvas>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      Medications
+    </ion-card-header>
+    <ion-card-content>
+      <canvas #drugsCanvas></canvas>
+    </ion-card-content>
+  </ion-card>
+  
+  <!-- <ion-card *ngFor="let item of items">
     <ion-card-content>
       <ion-card-header [color]="item.color">
           {{item.title}}
       </ion-card-header>
   </ion-card-content>
     <img src="assets/bar-graph.png">
-  </ion-card>
+  </ion-card> -->
 </ion-content>

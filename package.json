@@ -33,7 +33,8 @@
     "sw-toolbox": "3.6.0",
     "zone.js": "0.8.12",
     "@ionic/app-scripts": "^2.1.4",
-    "typescript": "2.3.4"
+    "typescript": "2.3.4",
+    "chart.js": "@latest",
   },
   "devDependencies": {
     "@ionic/app-scripts": "^2.1.4",

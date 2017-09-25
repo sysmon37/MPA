@@ -34,7 +34,7 @@
     "zone.js": "0.8.12",
     "@ionic/app-scripts": "^2.1.4",
     "typescript": "2.3.4",
-    "chart.js": "2.7.0",
+    "chart.js": "2.7.0"
   },
   "devDependencies": {
     "@ionic/app-scripts": "^2.1.4",

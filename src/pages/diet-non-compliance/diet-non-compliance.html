@@ -11,7 +11,6 @@
 </ion-header>
 
 <ion-content padding>
-    <!-- <img src="/assets/vitamin-k.jpg"> -->
   <ion-list no-lines>
     <ion-item>
       <ion-label>Date</ion-label>
@@ -29,5 +28,4 @@
       <button ion-button item-end [outline]="item.value!='-'" small color=danger icon-left (click)="valueChanged(item, '-')"><ion-icon name="arrow-round-down"></ion-icon>Too little</button>
     </ion-item>
   </ion-list>
-  <button ion-button block (click)="submit()" [disabled]="!canSubmit">Submit</button>
 </ion-content>

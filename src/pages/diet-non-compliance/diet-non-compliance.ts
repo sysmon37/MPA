@@ -49,13 +49,13 @@ export class DietNonCompliancePage {
     this.logValue(item);
   }
 
-  submit() {
-    this.navCtrl.pop();    
+  ionViewDidLeave(){
+    console.log('ionViewDidLeave DietNonCompliancePage');    
     let values = this.dataService.packValues(this.items);
     this.dataService.setNutrients(values);
-    console.log("Saving nutrients " + values);    
+    console.log("Saving nutrients " + values);       
   }
-
+  
   logValues() {
     for (let item of this.items) {
       this.logValue(item);

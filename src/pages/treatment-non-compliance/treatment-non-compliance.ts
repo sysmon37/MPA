@@ -23,7 +23,6 @@ export class TreatmentNonCompliancePage {
   // reason : string;
 
   items: any = [];
-  canSubmit: boolean = true;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public dataService: DataProvider) {
     this.items = [
@@ -44,16 +43,16 @@ export class TreatmentNonCompliancePage {
     this.dateTime = new Date().toISOString();
   }
 
-  valueChanged(item, value) {
-    item.value = item.value == value ? '?' : value;
-    console.log(item);
-  }
-
-  submit() {
-    this.navCtrl.pop();
+  ionViewDidLeave(){
+    console.log('ionViewDidLoad TreatmentNonCompliancePage');
     let values = this.dataService.packMultiValues(this.items);
     console.log("Saving drugs " + values);
     this.dataService.setDrugs(values);
+    
+  }
+  valueChanged(item, value) {
+    item.value = item.value == value ? '?' : value;
+    console.log(item);
   }
 
   logValues() {

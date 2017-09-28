@@ -49,8 +49,8 @@ export class SymptomsPage {
     this.dateTime = new Date().toISOString();
   }
 
-  submit() {
-    this.navCtrl.pop();
+  ionViewDidLeave(){
+    console.log('ionViewDidLeave SymptomsPage');   
     console.log("dateTime:" + this.dateTime);
     let values = this.dataService.packValues(this.items);
     this.dataService.setSymptoms(values);
@@ -60,13 +60,6 @@ export class SymptomsPage {
   valueChanged(item, value) {  
     item.value = item.value == value ? '?' : value;
     this.logValue(item);
-    
-    // this.canSubmit = false;
-    // for (let v of this.values)
-    //   if (v != "0") {
-    //     this.canSubmit = true;
-    //     break;
-    //   }
   }
 
   logValues() {

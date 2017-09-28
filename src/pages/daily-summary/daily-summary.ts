@@ -32,6 +32,8 @@ export class DailySummaryPage {
 
   engagementScore : number = 0;
 
+  doUpdate : boolean = false;
+
   stars : boolean[] = [false, false, false, false, false, false];
 
   readonly DRUG : string = 'drug';
@@ -65,8 +67,13 @@ export class DailySummaryPage {
   }
 
   ionViewDidEnter(){
+    if (this.doUpdate) {
+        this.dataService.setDrugs(this.dataService.packMultiValues(this.drugs));
+        this.dataService.setSymptoms(this.dataService.packValues(this.symptoms));
+        this.dataService.setNutrients(this.dataService.packValues(this.nutrients));
+    }
     this.updateVisibility();    
-    this.updateEngagementScore();
+    this.updateEngagementScore();    
   }
     
     submit() {

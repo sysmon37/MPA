@@ -1,6 +1,5 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { Navbar } from 'ionic-angular';
 
 /**
  * Generated class for the ImprovementPage page.
@@ -15,8 +14,6 @@ import { Navbar } from 'ionic-angular';
   templateUrl: 'improvement.html',
 })
 export class ImprovementPage {
-
-  @ViewChild(Navbar) navBar : Navbar;
 
   drugs : any = null;
   nutrients : any = null;
@@ -39,15 +36,6 @@ export class ImprovementPage {
     console.log('ionViewDidLoad ImprovementPage');
     this.collectPendingQuestions();
     this.updateVisibility();
-    this.navBar.backButtonClick = () => {
-      for (let item of this.pending)
-        item.value = '?';
-      this.navCtrl.pop();
-    }
-  }
-
-  submit() {
-    this.navCtrl.pop();
   }
 
   valueChanged(item, value) {

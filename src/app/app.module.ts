@@ -1,3 +1,4 @@
+import { HomePage } from './../pages/home/home';
 import { ImprovementPage } from './../pages/improvement/improvement';
 import { SelfReevaluationPage } from './../pages/self-reevaluation/self-reevaluation';
 import { WeeklySummaryPage } from './../pages/weekly-summary/weekly-summary';
@@ -22,21 +23,18 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
-
 import { ReportingAdherencePage } from './../pages/reporting-adherence/reporting-adherence';
 import { RiskyEventsPage } from './../pages/risky-events/risky-events';
 import { SymptomsPage } from './../pages/symptoms/symptoms';
 import { DailySummaryPage } from './../pages/daily-summary/daily-summary';
-
-
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
 import { DataProvider } from '../providers/data/data';
+import { IonicPageModule } from 'ionic-angular/module';
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage,
+    // HomePage,
     EducationPage,
     EducationDetailPage,
     BehaviorChangePage,
@@ -62,12 +60,12 @@ import { DataProvider } from '../providers/data/data';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage,
+    // HomePage,
     EducationPage,
     EducationDetailPage,
     BehaviorChangePage,

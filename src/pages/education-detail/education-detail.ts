@@ -24,16 +24,7 @@ export class EducationDetailPage {
     isChecked: boolean;
     currentView;
     
-    
-    
-    
-    
-    
-    
-   
-    
-    
-    
+  
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private storage: Storage) {
   }

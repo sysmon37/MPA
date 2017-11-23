@@ -1,9 +1,5 @@
-import { IntroPage } from './../intro/intro';
 import { Component } from '@angular/core';
 import { NavController, NavParams, IonicPage } from 'ionic-angular';
-import { EducationPage } from './../education/education';
-import { BehaviorChangePage} from './../behavior-change/behavior-change';
-import { ReportingPage } from './../reporting/reporting';
 import { Storage } from '@ionic/storage';
 
 @IonicPage({
@@ -18,33 +14,33 @@ import { Storage } from '@ionic/storage';
 export class HomePage {
 
   private showIntro : boolean = true;
-  private scenario : number = 0;
+  protected scenario : number;
 
   constructor(public navCtrl: NavController, public navParams : NavParams,  private storage: Storage) {
     let s = this.navParams.get('scenario');
-    this.scenario = s == null ? 0 : s;
+    this.scenario = s == ":scenario" ? 1 : s;
     console.info("Current scenario = " + this.scenario);
     this.showIntro = (this.scenario == 1);
   }
   
   ionViewDidLoad(){
     if (this.showIntro) {
-      this.navCtrl.push(IntroPage);
+      this.navCtrl.push("IntroPage");
       this.showIntro = false;
     }
     this.resetStorage();    
     console.log('ionViewDidLoad HomePage');
   }
   openEducationPage() {
-    this.navCtrl.push(EducationPage);
+    this.navCtrl.push("EducationPage");
   }
 
   openBehaviorChangePage() {
-    this.navCtrl.push(BehaviorChangePage);
+    this.navCtrl.push("BehaviorChangePage");
   }
 
   openReportingPage() {
-    this.navCtrl.push(ReportingPage);
+    this.navCtrl.push("ReportingPage");
   }
    
   resetStorage(){

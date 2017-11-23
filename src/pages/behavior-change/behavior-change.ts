@@ -1,6 +1,3 @@
-import { SelfReevaluationPage } from './../self-reevaluation/self-reevaluation';
-import { ProsPage } from './../pros/pros';
-import { BarriersToEngagementPage } from './../barriers-to-engagement/barriers-to-engagement';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
@@ -40,13 +37,13 @@ export class BehaviorChangePage {
   openBehaviorChangeDetailPage(item) {
     switch (item.id) {
       case BehaviorChange.ProsOfEngagement:
-        this.navCtrl.push(ProsPage);
+        this.navCtrl.push("ProsPage");
         break;
       case BehaviorChange.BarriersToEngagement:
-        this.navCtrl.push(BarriersToEngagementPage);
+        this.navCtrl.push("BarriersToEngagementPage");
         break;
       case BehaviorChange.SelfReevaluation:
-      this.navCtrl.push(SelfReevaluationPage);
+      this.navCtrl.push("SelfReevaluationPage");
     }
   }
 

@@ -1,12 +1,5 @@
-import { WeeklySummaryPage } from './../weekly-summary/weekly-summary';
-import { TreatmentNonCompliancePage } from './../treatment-non-compliance/treatment-non-compliance';
-import { DietNonCompliancePage } from './../diet-non-compliance/diet-non-compliance';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-import { RiskyEventsPage } from './../risky-events/risky-events';
-import { SymptomsPage } from './../symptoms/symptoms';
-import { DailySummaryPage } from './../daily-summary/daily-summary';
 
 import { Report } from '../../enums/enums';
 
@@ -60,22 +53,22 @@ export class ReportingPage {
       
       switch (item.id) {
         case Report.RiskyEvents:
-          this.navCtrl.push(RiskyEventsPage);
+          this.navCtrl.push("RiskyEventsPage");
         break;         
         case Report.DietNonCompliance:
-          this.navCtrl.push(DietNonCompliancePage);
+          this.navCtrl.push("DietNonCompliancePage");
           break;
         case Report.TreatmentNonCompliance:
-          this.navCtrl.push(TreatmentNonCompliancePage);
+          this.navCtrl.push("TreatmentNonCompliancePage");
           break;
         case Report.Symptoms:
-          this.navCtrl.push(SymptomsPage);
+          this.navCtrl.push("SymptomsPage");
           break;
         case Report.WeeklySummary:
-          this.navCtrl.push(WeeklySummaryPage);
+          this.navCtrl.push("WeeklySummaryPage");
           break;
         case Report.DailySummary:
-          this.navCtrl.push(DailySummaryPage);
+          this.navCtrl.push("DailySummaryPage");
           break;
   }
 

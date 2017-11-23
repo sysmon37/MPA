@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { HomePage } from './../home/home';
-import { InterviewPage } from './../interview/interview';
 import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
 
 
@@ -35,7 +33,7 @@ export class IntroPage {
   }
     
     openInterviewPage() {
-    this.navCtrl.push(InterviewPage);
+    this.navCtrl.push("InterviewPage");
   }
     
 }

@@ -1,4 +1,3 @@
-import { InterviewDetailPage } from './../interview-detail/interview-detail';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
@@ -43,6 +42,6 @@ export class InterviewPage {
   }
 
   openInterviewDetailPage(item) {
-    this.navCtrl.push(InterviewDetailPage, {item: item});    
+    this.navCtrl.push("InterviewDetailPage", {item: item});    
   }
 }

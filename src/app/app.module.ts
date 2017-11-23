@@ -34,7 +34,7 @@ import { IonicPageModule } from 'ionic-angular/module';
 @NgModule({
   declarations: [
     MyApp,
-    // HomePage,
+    HomePage,
     EducationPage,
     EducationDetailPage,
     BehaviorChangePage,
@@ -65,7 +65,7 @@ import { IonicPageModule } from 'ionic-angular/module';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    // HomePage,
+    HomePage,
     EducationPage,
     EducationDetailPage,
     BehaviorChangePage,

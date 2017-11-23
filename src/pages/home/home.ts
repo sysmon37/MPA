@@ -18,7 +18,7 @@ export class HomePage {
 
   constructor(public navCtrl: NavController, public navParams : NavParams,  private storage: Storage) {
     let s = this.navParams.get('scenario');
-    this.scenario = s == ":scenario" ? 1 : s;
+    this.scenario = (s == null || s == ":scenario") ? 1 : s;
     console.info("Current scenario = " + this.scenario);
     this.showIntro = (this.scenario == 1);
   }

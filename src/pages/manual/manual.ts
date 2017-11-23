@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { DocumentViewer } from '@ionic-native/document-viewer';
 
 /**
  * Generated class for the ManualPage page.
@@ -23,7 +22,7 @@ export class ManualPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ManualPage');
-      window.open('./../assets/user-manual.pdf', '_system', 'location=no');
+    window.open('./../assets/user-manual.pdf', '_system', 'location=no');
   }
 
 }

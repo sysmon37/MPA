@@ -1,7 +1,3 @@
-import { VideoPage } from './../video/video';
-import { InterviewPage } from './../interview/interview';
-import { EducationDetailPage } from './../education-detail/education-detail';
-import { ManualPage } from './../manual/manual';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
@@ -89,17 +85,17 @@ export class EducationPage {
   openItemDetailPage(item) {
     switch (item.id) {
       case EducationPage.ID_INTERVIEW:
-        this.navCtrl.push(InterviewPage); 
+        this.navCtrl.push("InterviewPage"); 
         break;
       case EducationPage.ID_EDUCATION:
         //this.rememberChoice(item.title);
-        this.navCtrl.push(EducationDetailPage, {item: item, title: item.alternativeTitle});
+        this.navCtrl.push("EducationDetailPage", {item: item, title: item.alternativeTitle});
         break;
       case EducationPage.ID_VIDEO:
-        this.navCtrl.push(VideoPage);
+        this.navCtrl.push("VideoPage");
         break;
       case EducationPage.ID_MANUAL:
-        this.navCtrl.push(ManualPage);
+        this.navCtrl.push("ManualPage");
         break;
       default: 
     }
@@ -113,7 +109,7 @@ export class EducationPage {
             time:'now'
         };
         
-        this.navCtrl.push(EducationDetailPage, data);
+        this.navCtrl.push("EducationDetailPage", data);
         
     }
 

@@ -1,4 +1,3 @@
-import { ProsDetailPage } from './../pros-detail/pros-detail';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
@@ -65,7 +64,7 @@ export class ProsPage {
 
   showProsDetailPage(item) {
     let subItem = item.subItems[item.pos];
-    this.navCtrl.push(ProsDetailPage, {item: {imageUrl: item.imageUrl, title: subItem.title, content: subItem.content}});
+    this.navCtrl.push("ProsDetailPage", {item: {imageUrl: item.imageUrl, title: subItem.title, content: subItem.content}});
     this.clickedItem = item;
   }
 }

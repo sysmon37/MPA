@@ -1,5 +1,4 @@
 import { DataProvider } from './../../providers/data/data';
-import { ImprovementPage } from './../improvement/improvement';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Treatment } from '../../enums/enums';
@@ -161,6 +160,7 @@ export class DailySummaryPage {
     }
 
     improveEngagement() {
-        this.navCtrl.push(ImprovementPage, {drugs: this.drugs, nutrients: this.nutrients, symptoms: this.symptoms});
+        this.doUpdate = true;
+        this.navCtrl.push("ImprovementPage", {drugs: this.drugs, nutrients: this.nutrients, symptoms: this.symptoms});
     }
 }

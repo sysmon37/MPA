@@ -1,12 +1,3 @@
-export enum Report {
-    DietNonCompliance = 0,
-    TreatmentNonCompliance,
-    Symptoms,
-    RiskyEvents,
-    DailySummary,
-    WeeklySummary
-};
-
 export enum RiskyEvent {
     Biopsy = 0,
     MinorSurgery,
@@ -36,12 +27,6 @@ export enum Treatment {
     Anticoagulant = 0,
     RateControl,
     RhythmControl
-};
-
-export enum BehaviorChange {
-    ProsOfEngagement = 0,
-    BarriersToEngagement,
-    SelfReevaluation
 };
 
 export enum Dose {

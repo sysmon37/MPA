@@ -13,9 +13,12 @@ export class DataProvider {
   readonly DRUGS : string = "drugs";
   readonly SYMPTOMS : string = "symptoms";
   readonly NUTRIENTS : string = "nutrients";
+  readonly SCENARIO : string = "scenario";
+
+  protected scenario = null;
 
   constructor(public storage: Storage) {
-    console.log('Hello DataProvider Provider');
+    console.log('DataProvider');
   }
   
   get(key) {
@@ -34,6 +37,10 @@ export class DataProvider {
     return this.get(this.NUTRIENTS);
   }
 
+  getScenario() {
+    return this.scenario;
+  }
+
   set(key, data) {
     let json = JSON.stringify(data);
     this.storage.set(key, json);
@@ -49,6 +56,11 @@ export class DataProvider {
 
   setNutrients(data) {
     this.set(this.NUTRIENTS, data);
+  }
+
+  setScenario(data) {
+    this.set(this.SCENARIO, data);
+    this.scenario = data;
   }
 
   unpackValues(data, items) {

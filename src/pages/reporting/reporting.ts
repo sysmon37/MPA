@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-import { Report } from '../../enums/enums';
+import { DataProvider } from '../../providers/data/data';
 
 /**
  * Generated class for the ReportingPage page.
@@ -17,32 +16,45 @@ import { Report } from '../../enums/enums';
 })
 export class ReportingPage {
 
-  itemGroups = [];
+  protected itemGroups = [];
+  protected scenario;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private dataService: DataProvider) {
     this.itemGroups = [
       { 
-        title: 'Diet and Medication Compliance', 
+        title: 'Compliance', 
         items: [      
-          {id: Report.DietNonCompliance, title: 'Diet Compliance', disabled: 0, scenarios: [1, 2, 3], special: 0},
-          {id: Report.TreatmentNonCompliance, title: 'Medication Compliance', disabled: 0, scenarios: [2, 3], special: 0}
-        ]
+          {title: 'Diet Compliance', targetPage: "DietNonCompliancePage", disabled: 0, scenarios: [], special: 0},
+          {title: 'Medication Compliance', targetPage: "TreatmentNonCompliancePage", disabled: 0, scenarios: [2], special: 0}
+        ],
+        scenarios: [2]
       },
       {
         title: 'Symptoms and Risky Events',
         items: [
-          {id: Report.Symptoms, title: 'Symptoms', disabled: 0, scenarios: [1, 2, 3], special: 0},
-          {id: Report.RiskyEvents, title: 'Risky Events', disabled: 0, scenarios: [1, 2, 3], special: 0}    
-        ]
+          {title: 'Symptoms', disabled: 0, targetPage: "SymptomsPage", scenarios: [2], special: 0},
+          {title: 'Risky Events', disabled: 0, targetPage: "RiskyEventsPage", scenarios: [2], special: 0}    
+        ],
+        scenarios: [2]
       },
       {
-        title: 'Daily and Weekly Summaries',
+        title: 'Summaries',
         items: [
-          {id: Report.DailySummary, title: 'Daily Summary', disabled: 0, scenarios: [1, 2, 3], special: 1},
-          {id: Report.WeeklySummary, title: 'Weekly Summary', disabled: 0, scenarios: [1, 2, 3], special: 1}    
-        ]
+          {title: 'Daily Summary', disabled: 0, targetPage: "DailySummaryPage", scenarios: [2], special: 1},
+          {title: 'Weekly Summary', disabled: 0, targetPage: "WeeklySummaryPage", scenarios: [3], special: 1}    
+        ],
+        scenarios: [2, 3]
+      },
+      {
+        title: 'Goal Achievement',
+        items: [
+          {title: 'Pursued and Achieved Goals', disabled: 0, targetPage: "GoalAchievedPage", scenarios: [3], special: 1},
+        ],
+        scenarios: [3]
       }
+
     ];
+    this.scenario = this.dataService.getScenario();
   }
 
   ionViewDidLoad() {
@@ -50,27 +62,7 @@ export class ReportingPage {
   }
 
   openReportingDetailPage(item) {
-      
-      switch (item.id) {
-        case Report.RiskyEvents:
-          this.navCtrl.push("RiskyEventsPage");
-        break;         
-        case Report.DietNonCompliance:
-          this.navCtrl.push("DietNonCompliancePage");
-          break;
-        case Report.TreatmentNonCompliance:
-          this.navCtrl.push("TreatmentNonCompliancePage");
-          break;
-        case Report.Symptoms:
-          this.navCtrl.push("SymptomsPage");
-          break;
-        case Report.WeeklySummary:
-          this.navCtrl.push("WeeklySummaryPage");
-          break;
-        case Report.DailySummary:
-          this.navCtrl.push("DailySummaryPage");
-          break;
+    this.navCtrl.push(item.targetPage);
   }
 
-}
 }

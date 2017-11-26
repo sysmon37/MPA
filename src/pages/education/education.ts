@@ -67,7 +67,7 @@ export class EducationPage {
         title: 'About this App',
         items: [
           {id: EducationPage.ID_VIDEO, title: 'Video tutorial', alternativeTitle: 'Video Tutorial', disabled: 0, scenarios: [1, 2, 3]},
-          {id: EducationPage.ID_MANUAL, title: 'User manual', alternativeTitle: 'User Manual', disabled: 0, scenarios: [1, 2, 3]},
+          {id: EducationPage.ID_MANUAL, title: 'User manual', alternativeTitle: 'User Manual', disabled: 1, scenarios: [1, 2, 3]},
         ]
       }      
     ];

@@ -6,11 +6,12 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <button ion-button large icon-left block (click)="openEducationPage()">
-    <ion-icon name="book"></ion-icon>Patient Education</button>
-  <button ion-button icon-left large block (click)="openBehaviorChangePage()">
-    <ion-icon name="body"></ion-icon>Behavior Change</button>
-  <button ion-button large block icon-left (click)="openReportingPage()">
-    <ion-icon name="create"></ion-icon>Reporting</button>
+<ion-content padding >
+  <ion-list>
+    <ng-container *ngFor="let item of items" >
+      <button ion-button large icon-left block (click)="openItemDetailPage(item)" *ngIf="item.scenarios.includes(scenario)">
+        <ion-icon name="{{item.iconName}}"></ion-icon>{{item.title}}
+      </button>
+    </ng-container>
+  </ion-list>
 </ion-content>

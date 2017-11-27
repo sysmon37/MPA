@@ -41,20 +41,20 @@ export class EducationDetailPage {
     console.log(item.title);
   //  this.currentContent(item.title);
       //console.log(this.isChecked);
-      var currentView = item.title;
-      console.log(currentView);
-      this.showS(item.title);
-      console.log(this.isChecked);
+    //   var currentView = item.title;
+    //   console.log(currentView);
+    //   this.showS(item.title);
+    //   console.log(this.isChecked);
       
       
       
-      this.storage.get(item.title).then((value) => {
-    console.log(value);
-            var theView = value.toString();
-            if(item.title == 'Diet' || 'Stress' || 'Being engaged'){
-                this.isChecked = theView;
-            }
-    });
+    //   this.storage.get(item.title).then((value) => {
+    // console.log(value);
+    //         var theView = value.toString();
+    //         if(item.title == 'Diet' || 'Stress' || 'Being engaged'){
+    //             this.isChecked = theView;
+    //         }
+    // });
       
   }
     

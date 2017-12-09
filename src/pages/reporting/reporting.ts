@@ -25,7 +25,7 @@ export class ReportingPage {
         title: 'Compliance', 
         items: [      
           {title: 'Diet Compliance', targetPage: "DietNonCompliancePage", disabled: 0, scenarios: [], special: 0},
-          {title: 'Medication Compliance', targetPage: "TreatmentNonCompliancePage", disabled: 0, scenarios: [2], special: 0}
+          {title: 'Treatment Compliance', targetPage: "TreatmentNonCompliancePage", disabled: 0, scenarios: [2], special: 0}
         ],
         scenarios: [2]
       },

@@ -14,5 +14,15 @@
 
 
 <ion-content padding>
-  <p>This page will display the score (and possibly some encouraging message) obtained in self-reevaluation</p>
+  <ion-card>
+    <ion-card-header>Your self-reevaluation score</ion-card-header>
+    <ion-card-content>
+      <div class="score">{{score}}%</div>
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <ion-card-content>
+      <div class="message">{{message}}</div>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

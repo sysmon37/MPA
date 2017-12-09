@@ -26,7 +26,7 @@ export class BehaviorChangePage {
     console.log('ionViewDidLoad BehaviorChangePage');
     this.items = [
       {title: 'Pros of Engagement', targetPage: "ProsPage", disabled: 0, scenarios: [1], special: 0},
-      {title: 'Barriers to Engagement', targetPage: "BarriersToEngagementPage", disabled: 0, scenarios: [2], special: 0},
+      {title: 'Barriers to Engagement', targetPage: "BarriersPage", disabled: 0, scenarios: [2], special: 0},
       {title: 'Self-reevaluation', targetPage: "SelfReevaluationPage", disabled: 0, scenarios: [2], special: 0},
       {title: 'Action Plan', targetPage: "ActionPlanPage", disabled: 0, scenarios: [3], special: 1}
     ];

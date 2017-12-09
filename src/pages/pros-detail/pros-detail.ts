@@ -15,9 +15,9 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class ProsDetailPage {
 
-  title = '';
-  itemContent = '';
-  itemImageUrl = '';
+  protected title = '';
+  protected itemContent = '';
+  protected itemImageUrl = '';
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     let item = navParams.get('item');

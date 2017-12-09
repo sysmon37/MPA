@@ -26,8 +26,8 @@ export class TreatmentNonCompliancePage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public dataService: DataProvider) {
     this.items = [
-      {id: Treatment.Anticoagulant, title: "Warfarin", description: 'Oral tablet, 5 mg', imageUrl: '/assets/warfarin-1x.jpg', value: '', doses: [{value: '?'}]},
-      {id: Treatment.RateControl, title: "Metoprolol", description: 'Oral tablet, 25 mg', imageUrl: '/assets/metoprolol-1x.jpg', value: '', doses: [{value: '?'}, {value:'?'}]}
+      {id: Treatment.Anticoagulant, title: "Dabigatran", description: 'Capsule, 150 mg', imageUrl: '/assets/dabigatran-1x.jpg', value: '', doses: [{value: '?'}, {value:'?'}]},
+      {id: Treatment.RateControl, title: "Metoprolol", description: 'Tablet, 25 mg', imageUrl: '/assets/metoprolol-1x.jpg', value: '', doses: [{value: '?'}, {value:'?'}]}
     ];
 
     this.dataService.getDrugs().then((data) => {

@@ -17,9 +17,9 @@
     <strong>Check these statements that apply to you</strong>
     <br />
     <ion-list no-lines>
-        <ion-item *ngFor="let item of items">
+        <ion-item *ngFor="let item of items; let i = index">
             <ion-label text-wrap>{{item.title}}</ion-label>
-            <ion-checkbox></ion-checkbox>
+            <ion-checkbox [(ngModel)]="values[i]"></ion-checkbox>
         </ion-item>
     </ion-list>
     <button ion-button block (click)="openSelfReevluationSummary()">Evaluate My Responses</button>

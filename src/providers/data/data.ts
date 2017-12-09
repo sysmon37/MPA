@@ -14,8 +14,12 @@ export class DataProvider {
   readonly SYMPTOMS : string = "symptoms";
   readonly NUTRIENTS : string = "nutrients";
   readonly SCENARIO : string = "scenario";
+  readonly SEEN_MATERIALS : string = "seen_materials";
+  readonly INVOKED_ACTIONS : string = "invoked_actions";
 
   protected scenario = null;
+  protected seenMaterials = [];
+  protected invokedActions = [];
 
   constructor(public storage: Storage) {
     console.log('DataProvider');
@@ -95,6 +99,40 @@ export class DataProvider {
         values[item.id][d] = item.doses[d].value;
     }
     return values;
+  }
+
+  addSeenMaterial(id) {
+    if (this.seenMaterials.indexOf(id) == -1) {
+      this.seenMaterials.push(id);
+      this.set(this.SEEN_MATERIALS, this.seenMaterials);
+    }
+  }
+
+  getSeenMaterials() {
+    return this.seenMaterials;
+  }
+
+  getMaterialCount() {
+    // Note this count is valid only for scenario 2
+    // Interview + InterviewQA1 + ... InterviewQA7 + Barriers
+    return 9;
+  }
+
+  addInvokedAction(id) {
+    if (this.invokedActions.indexOf(id) == -1) {
+      this.invokedActions.push(id);
+      this.set(this.INVOKED_ACTIONS, this.invokedActions);
+    }
+  }
+
+  getInvokedActions() {
+    return this.invokedActions;
+  }
+
+  getActionCount() {
+    // Note this count is valid only for scenario 2
+    // Barriers + SelfReevaluation
+    return 2;
   }
 }
 

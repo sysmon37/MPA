@@ -1,3 +1,5 @@
+import { Action } from './../../enums/enums';
+import { DataProvider } from './../../providers/data/data';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
@@ -10,14 +12,14 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-barriers-to-engagement',
-  templateUrl: 'barriers-to-engagement.html',
+  selector: 'page-barriers',
+  templateUrl: 'barriers.html',
 })
-export class BarriersToEngagementPage {
+export class BarriersPage {
 
   protected items = [];
   
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private dataService : DataProvider) {
     this.items = [
       {title: "Lack of positive reinforcement", disabled: 1, action: "Develop visuals reinforcing the positives of your behavior", targetPage: ""},
       {title: "Inadequate support from family/friends", disabled: 1, action: "Meet to present expectations and scope of support", targetPage: ""},
@@ -31,6 +33,7 @@ export class BarriersToEngagementPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad BarriersToEngagementPage');
+    this.dataService.addInvokedAction(Action.Barriers);
   }
 
   openItemDetailPage(item) {

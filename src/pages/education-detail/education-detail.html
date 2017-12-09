@@ -7,19 +7,13 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>{{title}}</ion-title>
+    <ion-title>{{item.groupTitle}}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 <ion-content padding>
-  <b>{{itemTitle}}</b>
-  <p [innerHTML]="itemContent"></p>
-  <img [src]="itemImage" *ngIf="itemImage">
-  <ion-list>
-    <ion-item no-lines>
-      <ion-label>I find this information useful</ion-label>
-      <ion-checkbox large checked color="secondary" [(ngModel)]="isChecked" (ionChange)="updateStatus()"></ion-checkbox>
-    </ion-item>
-  </ion-list>
+  <b>{{item.title}}</b>
+  <p [innerHTML]="item.content"></p>
+  <img [src]="item.image" *ngIf="item.image">
 </ion-content> 

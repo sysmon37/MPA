@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { ViewController } from 'ionic-angular/navigation/view-controller';
 
 /**
  * Generated class for the SelfReevaluationPage page.
@@ -16,8 +17,9 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class SelfReevaluationPage {
 
   protected items = [];
+  protected values = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private viewCtrl: ViewController) {
     this.items = [
       {title: "I am confident that I can get support for medical care and health problems when I need it"},
       {title: "I have been able to develop a routine to maintain healthy lifestyle"},
@@ -28,6 +30,9 @@ export class SelfReevaluationPage {
       {title: "I am confident that time I dedicate to managing my condition is time well spent"},
       {title: "I am the person who is responsible for managing my health condition"}
     ];
+
+    for (let i in this.items)
+      this.values[i] = false;
   }
 
   ionViewDidLoad() {
@@ -35,6 +40,12 @@ export class SelfReevaluationPage {
   }
 
   openSelfReevluationSummary() {
-    this.navCtrl.push("SelfReevaluationSummaryPage");
+    // Go to the summary page, but remove the current page from navigation history, 
+    // so it is a bit harder for the user to tweak the self-reevaluation questionnaire.
+    this.navCtrl.push("SelfReevaluationSummaryPage", {values : this.values})
+                .then(() => {
+                  const index = this.viewCtrl.index;
+                  this.navCtrl.remove(index);
+                });
   }
 }

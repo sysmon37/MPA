@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavParams } from 'ionic-angular';
+import { DataProvider } from '../../providers/data/data';
 
 /**
  * Generated class for the InterviewDetailsPage page.
@@ -15,16 +16,15 @@ import { IonicPage, NavParams } from 'ionic-angular';
 })
 export class InterviewDetailPage {
 
-  question;
-  answer;
+  protected item = null;
 
-  constructor(public navParams: NavParams) {
+  constructor(public navParams: NavParams, protected dataService : DataProvider) {
+    this.item = this.navParams.get('item')
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad InterviewDetailsPage');
-    this.question = this.navParams.get('item').question;
-    this.answer = this.navParams.get('item').answer;
+    if (this.item.id)
+      this.dataService.addSeenMaterial(this.item.id);
   }
-
 }

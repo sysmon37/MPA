@@ -41,8 +41,8 @@ export class DailySummaryPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public dataService: DataProvider) {
       this.drugs = [
-          {id: Treatment.Anticoagulant, title: "Warfarin", description: 'Oral tablet, 5 mg, 1 x daily', imageUrl: '/assets/warfarin-1x.jpg', value: '', doses: [{value: '?'}]},
-          {id: Treatment.RateControl, title: "Metoprolol", description: 'Oral tablet, 25 mg, 2 x daily', imageUrl: '/assets/metoprolol-2x.jpg', value: '', doses: [{value: '?'}, {value:'?'}]}
+          {id: Treatment.Anticoagulant, title: "Dabigatran", description: 'Capsule, 150 mg, 2 x daily', imageUrl: '/assets/dabigatran-2x.jpg', value: '', doses: [{value: '?'}, {value: '?'}]},
+          {id: Treatment.RateControl, title: "Metoprolol", description: 'Tablet, 25 mg, 2 x daily', imageUrl: '/assets/metoprolol-2x.jpg', value: '', doses: [{value: '?'}, {value: '?'}]}
       ];
 
       this.symptoms = [

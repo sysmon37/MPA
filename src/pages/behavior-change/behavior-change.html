@@ -16,7 +16,7 @@
 <ion-content padding>
   <ion-list>
     <ng-container *ngFor="let item of items">
-      <button ion-button large block [disabled]="item.disabled" [outline]="item.special" (click)="openBehaviorChangeDetailPage(item)" *ngIf="item.scenarios.includes(scenario)">{{item.title}}</button>
+      <button ion-button large block [color]="color(item)" [disabled]="item.disabled" [outline]="item.special" (click)="openBehaviorChangeDetailPage(item)" *ngIf="item.scenarios.includes(scenario)">{{item.title}}</button>
     </ng-container>    
   </ion-list>
 </ion-content>

@@ -18,6 +18,11 @@ export class DataProvider {
   readonly INVOKED_ACTIONS : string = "invoked_actions";
 
   protected scenario = null;
+
+  protected drugs = null;
+  protected symptoms = null;
+  protected nutrients = null;
+
   protected seenMaterials = [];
   protected invokedActions = [];
 
@@ -30,15 +35,18 @@ export class DataProvider {
   }
 
   getDrugs() {
-    return this.get(this.DRUGS);
+    // return this.get(this.DRUGS);
+    return this.drugs;
   }
 
   getSymptoms() {
-    return this.get(this.SYMPTOMS);
+    // return this.get(this.SYMPTOMS);
+    return this.symptoms;
   }
 
   getNutrients() {
-    return this.get(this.NUTRIENTS);
+    // return this.get(this.NUTRIENTS);
+    return this.nutrients;
   }
 
   getScenario() {
@@ -46,19 +54,23 @@ export class DataProvider {
   }
 
   set(key, data) {
-    let json = JSON.stringify(data);
-    this.storage.set(key, json);
+    // let json = JSON.stringify(data);
+    // this.storage.set(key, json);
+    this.storage.set(key, data);
   }
 
   setDrugs(data) {
+    this.drugs = data;
     this.set(this.DRUGS, data);
   }
 
   setSymptoms(data) {
+    this.symptoms = data;
     this.set(this.SYMPTOMS, data);
   }
 
   setNutrients(data) {
+    this.nutrients = data;
     this.set(this.NUTRIENTS, data);
   }
 
@@ -67,9 +79,8 @@ export class DataProvider {
     this.scenario = data;
   }
 
-  unpackValues(data, items) {
-    if (data) {
-      let values = JSON.parse(data);
+  unpackValues(values, items) {
+    if (values) {
       for (let item of items)
         item.value = values[item.id] != null ? values[item.id] : '?';    
     }
@@ -82,9 +93,8 @@ export class DataProvider {
     return values;
   }
 
-  unpackMultiValues(data, items) {
-    if (data) {
-      let values = JSON.parse(data);
+  unpackMultiValues(values, items) {
+    if (values) {
       for (let item of items)
         for (let d in item.doses)
           item.doses[d].value = values[item.id][d] != null ? values[item.id][d] : '?';    
@@ -118,6 +128,10 @@ export class DataProvider {
     return 9;
   }
 
+  isAnyMaterialToSee() {
+    return this.getSeenMaterials().length < this.getMaterialCount();
+  }
+
   addInvokedAction(id) {
     if (this.invokedActions.indexOf(id) == -1) {
       this.invokedActions.push(id);
@@ -133,6 +147,10 @@ export class DataProvider {
     // Note this count is valid only for scenario 2
     // Barriers + SelfReevaluation
     return 2;
+  }
+
+  isAnyActionToInvoke() {
+    return this.getInvokedActions().length < this.getActionCount();
   }
 }
 

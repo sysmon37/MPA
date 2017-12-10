@@ -22,21 +22,22 @@ export class DietNonCompliancePage {
   items: any = [];
   canSubmit: boolean = true;
 
+  // https://www.healthline.com/health/atrial-fibrillation/foods-to-avoid#eatingright
   constructor(public navCtrl: NavController, public navParams: NavParams, public dataService: DataProvider) {
     this.items = [
       // {id: Nutrient.Broccoli, title: 'Broccoli', imageUrl: '/assets/broccoli.jpg', value: '?'},
       // {id: Nutrient.Sprouts, title: 'Brussels sprouts', imageUrl: '/assets/sprouts.jpg', value: '?'},
       // {id: Nutrient.Endive, title: 'Endive', imageUrl: '/assets/endive.jpg', value: '?'},
       // {id: Nutrient.Spinach, title: 'Spinach', imageUrl: '/assets/spinach.jpg', value: '?'},
-      {id: Nutrient.VitaminK, title: 'Vitamin K', imageUrl: '', value: '?'}
+      // TODO: change to magnesium and potassium
+      {id: Nutrient.Minerals, title: 'Minerals', description: 'Magnesium and potassium', imageUrl: '', value: '?'}
     ];
 
-    this.dataService.getNutrients().then((data) => {
-      this.dataService.unpackValues(data, this.items);
-      console.log("Reading nutrients");
-      this.logValues();
-    });
-  
+    let values = this.dataService.getNutrients();
+    console.log("Reading nutrients");
+    console.log(values);
+    this.dataService.unpackValues(values, this.items);
+    this.logValues();
   }
 
   ionViewDidLoad() {
@@ -52,8 +53,9 @@ export class DietNonCompliancePage {
   ionViewDidLeave(){
     console.log('ionViewDidLeave DietNonCompliancePage');    
     let values = this.dataService.packValues(this.items);
+    console.log("Saving nutrients");
+    console.log(values);       
     this.dataService.setNutrients(values);
-    console.log("Saving nutrients " + values);       
   }
   
   logValues() {

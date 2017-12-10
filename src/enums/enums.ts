@@ -16,11 +16,12 @@ export enum Symptom {
 };
 
 export enum Nutrient {
-    Broccoli = 0,
-    Endive,
-    Spinach,
-    Sprouts,
-    VitaminK = 0
+    // Broccoli = 0,
+    // Endive,
+    // Spinach,
+    // Sprouts,
+    // VitaminK,
+    Minerals = 0
 };
 
 export enum Treatment {

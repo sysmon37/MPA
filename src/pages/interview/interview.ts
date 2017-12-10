@@ -17,7 +17,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class InterviewPage {
 
-  public items = [];
+  protected items = [];
+  protected highlighted = false;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, protected dataService : DataProvider) {
     this.items = [
@@ -34,17 +35,27 @@ export class InterviewPage {
       {id: Material.InterviewQA6, question: 'Did your symptoms improve after the ablation?',  
       answer: 'This aspect improved a lot, I do not think so much to AF because the symptoms, after ablation, do not appear (at least until now), so the daily life is no more compromised.'},
       {id: Material.InterviewQA7, question: 'What does it mean to you to be engaged in your treatment?',  
-      answer: ' It means to have counseling and explanations by my caregivers and understand the mechanisms of the disease and of the treatment, in such a way that I may face the problems more efficiently, and solve the minor problems by myself. I also like very much to be involved in research projects and to experiment new devices. Now that I am retired, this reminds me of the time I worked (<i>Michele was a technician in an otolaryngology ward</i>).'},
-
+      answer: ' It means to have counseling and explanations by my caregivers and understand the mechanisms of the disease and of the treatment, in such a way that I may face the problems more efficiently, and solve the minor problems by myself. I also like very much to be involved in research projects and to experiment new devices. Now that I am retired, this reminds me of the time I worked (<i>Michele was a technician in an otolaryngology ward</i>).'}
     ];
+
+    this.highlighted = this.navParams.get("highlighted") ? true : false;
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad InterviewPage');
     this.dataService.addSeenMaterial(Material.Interview);
+    console.log("highlighted = " + this.highlighted);
   }
 
   openInterviewDetailPage(item) {
     this.navCtrl.push("InterviewDetailPage", {item: item});    
   }
+
+  color(item) {
+    if (this.highlighted && item.id != null && this.dataService.getSeenMaterials().indexOf(item.id) == -1)
+      return "secondary";
+    else
+      return "";
+  }
+
 }

@@ -20,6 +20,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class EducationPage {
   protected itemGroups = [];
   protected scenario = null;
+  protected highlighted = false;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private dataService: DataProvider) {
     this.scenario = this.dataService.getScenario();
@@ -72,6 +73,8 @@ export class EducationPage {
       // }      
     ];
 
+    this.highlighted = this.navParams.get("highlighted") ? true : false;
+
     for(let group of this.itemGroups) {
       for (let item of group.items) 
         if (item.groupTitle === undefined) item.groupTitle = group.title;      
@@ -80,14 +83,23 @@ export class EducationPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad EducationPage');
+    console.log("highlighted = " + this.highlighted);
   }
 
   openItemDetailPage(item) {
     let params = null;
     if (item.targetPage == "EducationDetailPage")
       params = {item: item};
+    else
+      params = {highlighted: this.highlighted}
 
     this.navCtrl.push(item.targetPage, params);
   }
-    
+
+  color(item) {
+    if (this.highlighted && item.id != null && this.dataService.getSeenMaterials().indexOf(item.id) == -1)
+      return "secondary";
+    else
+      return "";
+  }
 }

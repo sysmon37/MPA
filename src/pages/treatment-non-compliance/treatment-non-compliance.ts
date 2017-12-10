@@ -30,12 +30,11 @@ export class TreatmentNonCompliancePage {
       {id: Treatment.RateControl, title: "Metoprolol", description: 'Tablet, 25 mg', imageUrl: '/assets/metoprolol-1x.jpg', value: '', doses: [{value: '?'}, {value:'?'}]}
     ];
 
-    this.dataService.getDrugs().then((data) => {
-      console.log(data);
-      this.dataService.unpackMultiValues(data, this.items);
-      console.log("Reading drugs");
-      this.logValues();
-    });    
+    let data = this.dataService.getDrugs();
+    console.log("Reading drugs");
+    console.log(data);
+    this.dataService.unpackMultiValues(data, this.items);
+    this.logValues();
   }
 
   ionViewDidLoad() {

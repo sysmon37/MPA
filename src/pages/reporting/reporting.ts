@@ -24,7 +24,7 @@ export class ReportingPage {
       { 
         title: 'Compliance', 
         items: [      
-          {title: 'Diet Compliance', targetPage: "DietNonCompliancePage", disabled: 0, scenarios: [], special: 0},
+          {title: 'Diet Compliance', targetPage: "DietNonCompliancePage", disabled: 0, scenarios: [2], special: 0},
           {title: 'Treatment Compliance', targetPage: "TreatmentNonCompliancePage", disabled: 0, scenarios: [2], special: 0}
         ],
         scenarios: [2]
@@ -40,7 +40,7 @@ export class ReportingPage {
       {
         title: 'Summaries',
         items: [
-          {title: 'Daily Summary', disabled: 0, targetPage: "DailySummaryPage", scenarios: [2], special: 1},
+          {title: 'Daily Summary', disabled: 0, targetPage: "DailySummaryPage", scenarios: [2], special: 0},
           {title: 'Weekly Summary', disabled: 0, targetPage: "WeeklySummaryPage", scenarios: [3], special: 1}    
         ],
         scenarios: [2, 3]

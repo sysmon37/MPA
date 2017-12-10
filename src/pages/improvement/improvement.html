@@ -55,9 +55,16 @@
           </ion-item>
       </ng-container>
       </ion-list>
-    <ion-list *ngIf="numPending > 0">
+    <ion-list *ngIf="pendingCount > 0">
       <ion-item>
-        {{numPending}} pending questions
+        {{pendingCount}} pending questions
       </ion-item>
-    </ion-list>      
+    </ion-list>     
+    <ion-list>
+      <ng-container *ngFor="let item of buttons; let i = index" >
+        <button ion-button large icon-left block (click)="openItemDetailPage(item)" *ngIf="showButtons[i]">
+          <ion-icon name="{{item.iconName}}"></ion-icon>{{item.title}}
+        </button>
+      </ng-container>
+    </ion-list> 
 </ion-content>

@@ -22,7 +22,7 @@
       Have you eaten right amount?
     </ion-list-header>
     <ion-item *ngFor="let item of items">
-      <ion-label>{{item.title}}</ion-label>
+      <ion-label><h2>{{item.title}}</h2><p>{{item.description}}</p></ion-label>
       <button ion-button item-end [outline]="item.value!='='" small color=safe icon-only (click)="valueChanged(item, '=')"><ion-icon name="checkmark"></ion-icon></button>      
       <button ion-button item-end [outline]="item.value!='+'" small color=danger icon-left (click)="valueChanged(item, '+')"><ion-icon name="arrow-round-up"></ion-icon>Too much</button>
       <button ion-button item-end [outline]="item.value!='-'" small color=danger icon-left (click)="valueChanged(item, '-')"><ion-icon name="arrow-round-down"></ion-icon>Too little</button>

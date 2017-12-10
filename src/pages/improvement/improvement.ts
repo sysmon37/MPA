@@ -1,3 +1,4 @@
+import { DataProvider } from './../../providers/data/data';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
@@ -15,26 +16,38 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class ImprovementPage {
 
-  drugs : any = null;
-  nutrients : any = null;
-  symptoms : any = null;
+  protected drugs : any = null;
+  protected nutrients : any = null;
+  protected symptoms : any = null;
+  protected buttons  = [];
 
-  pending : any = [];
-  numPending : number = 0;
+  protected pending : any = [];
+  protected pendingCount : number = 0;
 
-  showDrugs : boolean = false;
-  showNutrients : boolean = false;
-  showSymptoms : boolean = false;
+  protected showDrugs : boolean = false;
+  protected showNutrients : boolean = false;
+  protected showSymptoms : boolean = false;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  protected showButtons : boolean[] = [false, false];
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private dataService: DataProvider) {
     this.drugs = navParams.get('drugs');
     this.nutrients = navParams.get('nutrients');
     this.symptoms = navParams.get('symptoms');
+
+    this.buttons = [
+      {title: "Patient Education", iconName: "book", targetPage: "EducationPage"},
+      {title: "Behavior Change", iconName: "body", targetPage: "BehaviorChangePage"},
+    ];
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ImprovementPage');
-    this.collectPendingQuestions();
+    this.collectPendingQuestions();    
+  }
+
+  ionViewDidEnter() {
+    console.log('ionViewDidEnter ImprovementPage');    
     this.updateVisibility();
   }
 
@@ -65,15 +78,15 @@ export class ImprovementPage {
         this.pending.push(s);
     }
 
-    this.numPending = this.pending.length;
+    this.pendingCount = this.pending.length;
     
     this.showNextPendingQuestion();
   }
 
   showNextPendingQuestion() {
-    if (this.numPending > 0) {
-      this.pending[this.pending.length - this.numPending].visible = true;
-      this.numPending--;
+    if (this.pendingCount > 0) {
+      this.pending[this.pending.length - this.pendingCount].visible = true;
+      this.pendingCount--;
       this.updateVisibility();
     }
   }
@@ -91,10 +104,19 @@ export class ImprovementPage {
           break;
         }
     for (let s of this.symptoms) 
-    if (s.visible) {
-      this.showSymptoms = true;
-      break;
-    }
+      if (s.visible) {
+        this.showSymptoms = true;
+        break;
+      }
+    this.showButtons[0] = this.dataService.isAnyMaterialToSee();
+    this.showButtons[1] = this.dataService.isAnyActionToInvoke();
+
+    if (!this.showDrugs && !this.showNutrients && !this.showSymptoms && this.showButtons.indexOf(true) == -1)
+      this.navCtrl.pop();
+  }
+
+  openItemDetailPage(item) {
+    this.navCtrl.push(item.targetPage, { highlighted: true });
   }
 
 }

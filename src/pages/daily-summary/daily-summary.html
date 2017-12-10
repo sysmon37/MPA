@@ -35,8 +35,11 @@
       Daily engagement
     </ion-list-header>
     <ion-item>
-      <ion-icon *ngFor="let star of stars" [name]="star ? 'star' : 'star-outline'" item-first color='light_green' style='font-size:38px'></ion-icon>
-      <button ion-button item-end clear icon-end style="font-size:16px" (click)="improveEngagement()">
+      <ion-label class="score">
+      {{engagementScore}}%
+      <ion-icon *ngFor="let star of stars" [name]="starName(star)" item-first color='light_green' style='font-size:38px'></ion-icon>
+      </ion-label>
+      <button *ngIf="showImprovement" ion-button item-end clear icon-end style="font-size:18px;" (click)="improveEngagement()">
         Improve
         <ion-icon name="arrow-round-forward"></ion-icon>
       </button>
@@ -61,7 +64,7 @@
       Right amount eaten
     </ion-list-header>
     <ion-item *ngFor="let item of nutrients" [hidden]="item.value=='?'">
-      <ion-label>{{item.title}}</ion-label>        
+      <ion-label><h2>{{item.title}}</h2><p>{{item.description}}</p></ion-label>        
       <button ion-button item-end small [color]="color(item.value, NUTRIENT)">
         <ion-icon [name]="iconName(item.value, NUTRIENT)" large></ion-icon>
       </button>    

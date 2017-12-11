@@ -2,8 +2,6 @@ import { DataProvider } from './../../providers/data/data';
 import { Component } from '@angular/core';
 import { NavController, NavParams, IonicPage } from 'ionic-angular';
 
-import { Material } from '../../enums/enums';
-
 @IonicPage({
   segment: 'scenario/:scenario'
 })

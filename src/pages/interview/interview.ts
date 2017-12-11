@@ -43,7 +43,6 @@ export class InterviewPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad InterviewPage');
-    this.dataService.addSeenMaterial(Material.Interview);
     console.log("highlighted = " + this.highlighted);
   }
 

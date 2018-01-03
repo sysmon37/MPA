@@ -17,7 +17,7 @@ import { RiskyEvent } from '../../enums/enums';
 export class RiskyEventsPage {
     
     dateTime : string;
-    allDay : boolean = false;
+    // allDay : boolean = false;
     items : any[];
     values : boolean[] = [];
     canSubmit : boolean = false;
@@ -33,11 +33,12 @@ export class RiskyEventsPage {
     ];
     for (let i in this.items)
       this.values[i] = false;
-  }
+    
+      this.dateTime = new Date().toISOString();      
+    }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad RiskyEventsPage');
-    this.dateTime = new Date().toISOString();
   }
  
   submit() {

@@ -41,7 +41,7 @@ export class ReportingPage {
         title: 'Summaries',
         items: [
           {title: 'Daily Summary', disabled: 0, targetPage: "DailySummaryPage", scenarios: [2], special: 0},
-          {title: 'Weekly Summary', disabled: 0, targetPage: "WeeklySummaryPage", scenarios: [3], special: 1}    
+          {title: 'Weekly Summary', disabled: 0, targetPage: "WeeklySummaryPage", scenarios: [2, 3], special: 1}    
         ],
         scenarios: [2, 3]
       },

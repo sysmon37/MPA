@@ -16,7 +16,16 @@
 <ion-content padding>
   <ion-card>
     <ion-card-header>
-      Your Overall Feeling
+      Weekly Engagement
+    </ion-card-header>
+    <ion-card-content>
+      <canvas #peerCanvas></canvas>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      Daily Engagement and Overall Feeling
     </ion-card-header>
     <ion-card-content>
       <canvas #overallCanvas></canvas>
@@ -25,13 +34,14 @@
 
   <ion-card>
     <ion-card-header>
-      Medications
+      Weekly Engagement Ratings
     </ion-card-header>
     <ion-card-content>
-      <canvas #drugsCanvas></canvas>
+      <canvas #detailedCanvas></canvas>
     </ion-card-content>
   </ion-card>
-  
+
+ 
   <!-- <ion-card *ngFor="let item of items">
     <ion-card-content>
       <ion-card-header [color]="item.color">

@@ -15,12 +15,13 @@ import { RiskyEvent } from '../../enums/enums';
   templateUrl: 'risky-events.html',
 })
 export class RiskyEventsPage {
-    
-    dateTime : string;
-    // allDay : boolean = false;
-    items : any[];
-    values : boolean[] = [];
-    canSubmit : boolean = false;
+ 
+  protected selected = null;
+  protected previous = null;
+  protected event = null;
+  protected dateTime : string;
+  protected items : any[];
+  // protected values : boolean[] = [];
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {      
     this.items = [
@@ -31,27 +32,35 @@ export class RiskyEventsPage {
       {id: RiskyEvent.DiagnosticProcedure, title: 'Diagnostic procedure (with risk of bleeding)'},
       {id: RiskyEvent.Hospitalization, title: 'Hospitalization'}
     ];
-    for (let i in this.items)
-      this.values[i] = false;
-    
-      this.dateTime = new Date().toISOString();      
-    }
+    this.event = this.navParams.get('event');
+    this.selected = this.event.id;
+
+    // for (let i in this.items)
+    //   this.values[i] = this.items[i].id == this.event.id;    
+
+    this.dateTime = this.event.startTime.toISOString();   
+    console.log("iso date = " + this.dateTime);
+  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad RiskyEventsPage');
+
   }
  
   submit() {
     this.navCtrl.pop();
-    console.log(this.values);
+    // console.log(this.values);
   }
 
-  valueChanged() {
-    this.canSubmit = false;
-    for (let v of this.values)
-      if (v) {
-        this.canSubmit = true;
-        break;
-      }
+  onValueChanged() {
+    console.log("value changed = " + this.selected);
+    if (this.selected == this.previous)
+      this.selected = null;
+    this.previous = this.selected;
+    this.event.id = this.selected;
+  }
+
+  onItemSelected(item) {
+    this.event.title = item.title;
   }
 }

@@ -16,7 +16,7 @@
     <ion-list>
       <ion-item>
         <ion-label>Date</ion-label>
-        <ion-datetime displayFormat="YYYY-MM-DD" [(ngModel)]="dateTime"></ion-datetime>
+        <ion-datetime displayFormat="YYYY-MM-DD" [(ngModel)]="dateTime" disabled></ion-datetime>
       </ion-item>        
         <!-- <ion-item>
           <ion-label>All day</ion-label>
@@ -28,12 +28,11 @@
       </ion-item>         -->
     </ion-list>
     
-    <ion-list>
-      <ion-list-header>Events</ion-list-header> 
+    <ion-list radio-group [(ngModel)]="selected" (ionChange)="onValueChanged()">
+      <ion-list-header>Event</ion-list-header> 
       <ion-item *ngFor="let item of items">
         <ion-label>{{item.title}}</ion-label>
-        <ion-toggle [(ngModel)]="values[item.id]" (ionChange)="valueChanged()"></ion-toggle>
+        <ion-radio [value]="item.id" (ionSelect)="onItemSelected(item)"></ion-radio>
       </ion-item>
     </ion-list>   
-  <button ion-button block (click)="submit()" [disabled]="!canSubmit">Submit</button>
 </ion-content>

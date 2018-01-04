@@ -19,7 +19,7 @@ export class HomePage {
 
   constructor(public navCtrl: NavController, public navParams : NavParams,  private dataService: DataProvider) {
     let s = Number(this.navParams.get('scenario'));
-    this.scenario = Math.min(2, Math.max(1, s));
+    this.scenario = Math.min(2, Math.max(1, isNaN(s) ? 0 : s));
     console.info("Current scenario = " + this.scenario);
     this.showIntro = (this.scenario == 1);
     this.showIntro = false;

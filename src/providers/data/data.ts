@@ -16,6 +16,7 @@ export class DataProvider {
   readonly SCENARIO : string = "scenario";
   readonly SEEN_MATERIALS : string = "seen_materials";
   readonly INVOKED_ACTIONS : string = "invoked_actions";
+  readonly RISKY_EVENTS : string = "risky_events";
 
   protected scenario = null;
 
@@ -25,6 +26,7 @@ export class DataProvider {
 
   protected seenMaterials = [];
   protected invokedActions = [];
+  protected riskyEvents = [];
 
   constructor(public storage: Storage) {
     console.log('DataProvider');
@@ -77,6 +79,11 @@ export class DataProvider {
   setScenario(data) {
     this.set(this.SCENARIO, data);
     this.scenario = data;
+  }
+
+  setRiskyEvents(data) {
+    this.set(this.RISKY_EVENTS, data);
+    this.riskyEvents = data;
   }
 
   unpackValues(values, items) {
@@ -151,6 +158,10 @@ export class DataProvider {
 
   isAnyActionToInvoke() {
     return this.getInvokedActions().length < this.getActionCount();
+  }
+
+  getRiskyEvents() {
+    return this.riskyEvents;
   }
 }
 

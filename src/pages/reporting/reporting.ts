@@ -33,7 +33,7 @@ export class ReportingPage {
         title: 'Symptoms and Risky Events',
         items: [
           {title: 'Symptoms', disabled: 0, targetPage: "SymptomsPage", scenarios: [2], special: 0},
-          {title: 'Risky Events', disabled: 0, targetPage: "RiskyEventsPage", scenarios: [2], special: 0}    
+          {title: 'Risky Events', disabled: 0, targetPage: "RiskyEventCalendarPage", scenarios: [2], special: 0}    
         ],
         scenarios: [2]
       },
@@ -41,7 +41,7 @@ export class ReportingPage {
         title: 'Summaries',
         items: [
           {title: 'Daily Summary', disabled: 0, targetPage: "DailySummaryPage", scenarios: [2], special: 0},
-          {title: 'Weekly Summary', disabled: 0, targetPage: "WeeklySummaryPage", scenarios: [2, 3], special: 1}    
+          {title: 'Weekly Summary', disabled: 0, targetPage: "WeeklySummaryPage", scenarios: [2, 3], special: 0}    
         ],
         scenarios: [2, 3]
       },

@@ -11,10 +11,10 @@ import { RiskyEvent } from '../../enums/enums';
 
 @IonicPage()
 @Component({
-  selector: 'page-risky-events',
-  templateUrl: 'risky-events.html',
+  selector: 'page-risky-event',
+  templateUrl: 'risky-event.html',
 })
-export class RiskyEventsPage {
+export class RiskyEventPage {
  
   protected selected = null;
   protected previous = null;

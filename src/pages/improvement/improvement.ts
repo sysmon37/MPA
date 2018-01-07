@@ -37,7 +37,7 @@ export class ImprovementPage {
 
     this.buttons = [
       {title: "Patient Education", iconName: "book", targetPage: "EducationPage"},
-      {title: "Behavior Change", iconName: "body", targetPage: "BehaviorChangePage"},
+      {title: "Behavior Modification", iconName: "body", targetPage: "BehaviorChangePage"},
     ];
   }
 

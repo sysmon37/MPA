@@ -37,11 +37,7 @@ export class SymptomsPage {
       // {id: Symptom.Lightheadedness, title: 'Lightheadedness'}
     ];
 
-    this.dataService.getSymptoms().then((data) => {
-        dataService.unpackValues(data, this.items);
-        console.log("Reading symptoms");
-        this.logValues();
-      })
+    this.dataService.unpackValues(this.dataService.getSymptoms(), this.items);
   }
 
   ionViewDidLoad() {

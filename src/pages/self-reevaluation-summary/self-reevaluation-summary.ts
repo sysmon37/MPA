@@ -30,12 +30,12 @@ export class SelfReevaluationSummaryPage {
     this.score = Math.round(this.score * 100.0 / values.length);
     console.log("score = " + this.score);
 
-    if (this.score >= 70)
-      this.message  = "This would be a message displayed when the patient passes the threshold of 70%. It should praise the patient for her/his achievement."
+    if (this.score >= 80)
+      this.message  = "Congratulations! You are doing a great job in becoming a fully engaged patient.";
     else if (this.score >= 50) 
-      this.message = "This would be a message displayed when the score is between 50 and 70%. It should state the patient is very close to the boundary and encourage her/him to try a bit more.";
+      this.message = "Congratulations! You are on a right track to improve your engagements. Please be persistent in you efforts and repeat self-reevaluation soon.";
     else
-      this.message = "This would be a message displayed when the score is below 50%. It should encourage the patient to try harder.";
+      this.message = "We know you are trying hard to improve your engagement and appreciate it! Please take some more time to work on this and than repeat self-reevaluation.";
   }
 
   ionViewDidLoad() {

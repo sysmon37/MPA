@@ -58,7 +58,7 @@ export class DailySummaryPage {
       ];
 
       this.dataService.unpackMultiValues(this.dataService.getDrugs(), this.drugs);
-      this.dataService.unpackValues(this.dataService.getSymptoms(), this.symptoms)
+      this.dataService.unpackValues(this.dataService.getSymptoms(), this.symptoms);
       this.dataService.unpackValues(this.dataService.getNutrients(), this.nutrients);      
 
   }

@@ -64,12 +64,12 @@ export class RiskyEventCalendarPage {
       id: null,
       isNew: true
     };
-    this.navCtrl.push("RiskyEventsPage", {event: this.editedEvent})
+    this.navCtrl.push("RiskyEventPage", {event: this.editedEvent})
   }
 
   onEventSelected(event) {
     this.editedEvent = event;
-    this.navCtrl.push("RiskyEventsPage", {event: this.editedEvent})    
+    this.navCtrl.push("RiskyEventPage", {event: this.editedEvent})    
   }
 
   onDateChanged(event) {

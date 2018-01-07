@@ -27,7 +27,7 @@ export class HomePage {
     
     this.items = [
       {title: "Patient Education", iconName: "book", targetPage: "EducationPage", scenarios: [1, 2, 3]},
-      {title: "Behavior Change", iconName: "body", targetPage: "BehaviorChangePage", scenarios: [1, 2, 3]},
+      {title: "Behavior Modification", iconName: "body", targetPage: "BehaviorChangePage", scenarios: [1, 2, 3]},
       {title: "Reporting", iconName: "create", targetPage: "ReportingPage", scenarios: [2, 3]}
     ];
   }

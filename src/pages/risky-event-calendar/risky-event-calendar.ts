@@ -52,24 +52,24 @@ export class RiskyEventCalendarPage {
   }
 
   onAddEvent() {
-    let utcStart = new Date(Date.UTC(
+    let startTime = new Date(Date.UTC(
       this.selectedDate.getFullYear(), this.selectedDate.getMonth(), this.selectedDate.getDate()));
-    let utcEnd = new Date(utcStart);
-    utcEnd.setUTCDate(utcEnd.getUTCDate() + 1);
+    let endTime = new Date(startTime);
+    endTime.setUTCDate(endTime.getUTCDate() + 1);
     this.editedEvent = {
       allDay: true,
       title: '',
-      startTime: utcStart,
-      endTime: utcEnd,
+      startTime: startTime,
+      endTime: endTime,
       id: null,
       isNew: true
     };
-    this.navCtrl.push("RiskyEventPage", {event: this.editedEvent})
+    this.navCtrl.push("RiskyEventPage", {event: this.editedEvent});
   }
 
   onEventSelected(event) {
     this.editedEvent = event;
-    this.navCtrl.push("RiskyEventPage", {event: this.editedEvent})    
+    this.navCtrl.push("RiskyEventPage", {event: this.editedEvent});
   }
 
   onDateChanged(event) {

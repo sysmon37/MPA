@@ -14,6 +14,30 @@
 
 
 <ion-content padding>
-    <p>This page will demonstrate the action planning function (inspired by the <i>action plan</i> from the anticoagulaiton booklet from Marc) for defining custom alerts. </p>
-      
+    <ion-list no-lines>
+        <ion-item>
+          <ion-label>Date</ion-label>
+          <ion-datetime displayFormat="YYYY-MM-DD" [(ngModel)]="startTime" disabled></ion-datetime>
+        </ion-item>        
+        <ion-item>
+            <ion-label>Start Time</ion-label>
+            <ion-datetime displayFormat="HH:mm" [(ngModel)]="startTime" [max]="endTime"></ion-datetime>
+          </ion-item>        
+        <ion-item>
+            <ion-label>End Time</ion-label>
+            <ion-datetime displayFormat="HH:mm" [(ngModel)]="endTime" [min]="startTime"></ion-datetime>
+          </ion-item>        
+      </ion-list>
+      <ion-list no-lines>
+        <ion-item>
+          <ion-input placeholder="Action Description" type="text" [(ngModel)]="action.title" clearInput=true></ion-input>
+        </ion-item>
+      </ion-list>
+      <ion-list>
+        <ion-list-header>Action Items</ion-list-header>
+        <ion-item *ngFor="let item of action.items; let i = index; trackBy:trackByIndex">
+          <ion-label>{{i + 1}}</ion-label>
+          <ion-input type="text" placeholder="Item {{i + 1}}" clearInput=true [(ngModel)]="action.items[i]"></ion-input>          
+        </ion-item>
+      </ion-list>
 </ion-content>

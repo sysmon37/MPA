@@ -19,6 +19,7 @@ export class ActionPlanReminderPage {
   protected date: string = '';
   protected startTime: string = '';
   protected endTime: string = '';
+  protected title: string = ''
   protected action: any = null;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
@@ -26,12 +27,11 @@ export class ActionPlanReminderPage {
     this.date = moment(this.action.startTime).format('YYYY-MM-DD');
     this.startTime = moment(this.action.startTime).format('HH:mm');
     this.endTime = moment(this.action.endTime).format('HH:mm');
-
-    console.log("date = " + this.date + " start = " + this.startTime);
+    this.title = this.action.title;
+    this.action.title = '';
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ActionPlanReminderPage');
   }
-
 }

@@ -30,14 +30,14 @@
       </ion-list>
       <ion-list no-lines>
         <ion-item>
-          <ion-input placeholder="Action Description" type="text" [(ngModel)]="action.title" clearInput=true></ion-input>
+          <ion-input placeholder="Enter action description" type="text" [(ngModel)]="action.title" clearInput=true></ion-input>
         </ion-item>
       </ion-list>
       <ion-list>
         <ion-list-header>Action Items</ion-list-header>
         <ion-item *ngFor="let item of action.items; let i = index; trackBy:trackByIndex">
           <ion-label>{{i + 1}}</ion-label>
-          <ion-input type="text" placeholder="Item {{i + 1}}" clearInput=true [(ngModel)]="action.items[i]"></ion-input>          
+          <ion-input type="text" placeholder="Enter description of item {{i + 1}}" clearInput=true [(ngModel)]="action.items[i]"></ion-input>          
         </ion-item>
       </ion-list>
 </ion-content>

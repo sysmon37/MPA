@@ -37,6 +37,7 @@ export class ActionPlanCalendarPage {
     if (this.editedAction == null)
       return;
 
+    console.log(this.editedAction);
     if (!this.editedAction.isNew) {
       this.actions = this.actions.filter((value, index, array) => value.title != '');
     } else if (this.editedAction.title != '') {
@@ -79,7 +80,8 @@ export class ActionPlanCalendarPage {
 
   onTestReminder() {
     let i = Math.floor(Math.random()*this.actions.length);
-    this.navCtrl.push("ActionPlanReminderPage", {action: this.actions[i]});
+    this.editedAction = this.actions[i];
+    this.navCtrl.push("ActionPlanReminderPage", {action: this.editedAction});
   }
 
   markDisabled = (date) => {

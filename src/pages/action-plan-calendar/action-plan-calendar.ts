@@ -77,6 +77,11 @@ export class ActionPlanCalendarPage {
     this.selectedDate = event;
   }
 
+  onTestReminder() {
+    let i = Math.floor(Math.random()*this.actions.length);
+    this.navCtrl.push("ActionPlanReminderPage", {action: this.actions[i]});
+  }
+
   markDisabled = (date) => {
     date.setHours(0, 0, 0, 0);
     return date < this.todayDate;

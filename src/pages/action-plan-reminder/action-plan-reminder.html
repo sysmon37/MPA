@@ -1,0 +1,45 @@
+<!--
+  Generated template for the ActionPlanReminderPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Action Plan Reminder</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list no-lines>
+    <ion-item>
+      <ion-label>Date</ion-label>
+      <ion-note item-end>{{date}}</ion-note>
+    </ion-item>        
+    <ion-item>
+        <ion-label>Time</ion-label>
+        <ion-note item-end>{{startTime}} - {{endTime}}</ion-note>
+      </ion-item>        
+  </ion-list>
+  <ion-list no-lines>
+    <ion-item class="title">{{action.title}}</ion-item>
+  </ion-list>
+  <ion-list>
+    <ng-container *ngFor="let item of action.items">
+      <ion-item *ngIf="item!=''">
+        <ion-label>{{item}}</ion-label>
+        <ion-checkbox></ion-checkbox>
+      </ion-item>
+    </ng-container>
+  </ion-list>
+  <ion-list>
+    <ion-item>
+      <ion-label stacked>Notes</ion-label>
+      <ion-textarea placeholder="Additional Notes"></ion-textarea>
+    </ion-item>
+  </ion-list>
+
+</ion-content>

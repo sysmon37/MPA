@@ -24,21 +24,21 @@
         <ion-note item-end>{{startTime}} - {{endTime}}</ion-note>
       </ion-item>        
   </ion-list>
-  <ion-list no-lines>
+  <!-- <ion-list no-lines>
     <ion-item class="title">{{title}}</ion-item>
-  </ion-list>
+  </ion-list> -->
   <ion-list>
-    <ng-container *ngFor="let item of action.items">
+    <ng-container *ngFor="let item of action.items; let i = index">
       <ion-item *ngIf="item!=''">
         <ion-label>{{item}}</ion-label>
-        <ion-checkbox></ion-checkbox>
+        <ion-checkbox [(ngModel)]="action.values[i]"></ion-checkbox>
       </ion-item>
     </ng-container>
   </ion-list>
   <ion-list>
     <ion-item>
       <ion-label stacked>Notes</ion-label>
-      <ion-textarea placeholder="Enter additional notes"></ion-textarea>
+      <ion-textarea [(ngModel)]="action.notes" placeholder="Enter additional notes on how you have executed your actions"></ion-textarea>
     </ion-item>
   </ion-list>
 

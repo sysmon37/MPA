@@ -19,7 +19,6 @@ export class ActionPlanReminderPage {
   protected date: string = '';
   protected startTime: string = '';
   protected endTime: string = '';
-  protected title: string = ''
   protected action: any = null;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
@@ -27,11 +26,12 @@ export class ActionPlanReminderPage {
     this.date = moment(this.action.startTime).format('YYYY-MM-DD');
     this.startTime = moment(this.action.startTime).format('HH:mm');
     this.endTime = moment(this.action.endTime).format('HH:mm');
-    this.title = this.action.title;
-    this.action.title = '';
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ActionPlanReminderPage');
+  ionViewWillLeave(){
+    console.log('ionViewWillLeave ActionPlanReminderPage');
+    let numActions = this.action.items.filter(item => item != '').length;
+    let numCompleted = this.action.values.filter(value => value == true).length;
+    this.action.title = numActions + " action" + (numActions > 1 ? "s" : "") + ", " + Math.round(numCompleted/numActions*100.0) +"% completed";
   }
 }

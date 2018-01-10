@@ -10,13 +10,14 @@ import 'rxjs/add/operator/map';
 */
 @Injectable()
 export class DataProvider {
-  readonly DRUGS : string = "drugs";
-  readonly SYMPTOMS : string = "symptoms";
-  readonly NUTRIENTS : string = "nutrients";
-  readonly SCENARIO : string = "scenario";
-  readonly SEEN_MATERIALS : string = "seen_materials";
-  readonly INVOKED_ACTIONS : string = "invoked_actions";
-  readonly RISKY_EVENTS : string = "risky_events";
+  readonly DRUGS: string = "drugs";
+  readonly SYMPTOMS: string = "symptoms";
+  readonly NUTRIENTS: string = "nutrients";
+  readonly SCENARIO: string = "scenario";
+  readonly SEEN_MATERIALS: string = "seen_materials";
+  readonly INVOKED_ACTIONS: string = "invoked_actions";
+  readonly RISKY_EVENTS: string = "risky_events";
+  readonly ACTIONS: string = "actions";
 
   protected scenario = null;
 
@@ -27,6 +28,7 @@ export class DataProvider {
   protected seenMaterials = [];
   protected invokedActions = [];
   protected riskyEvents = [];
+  protected actions = [];
 
   constructor(public storage: Storage) {
     console.log('DataProvider');
@@ -84,6 +86,11 @@ export class DataProvider {
   setRiskyEvents(data) {
     this.set(this.RISKY_EVENTS, data);
     this.riskyEvents = data;
+  }
+
+  setPlanActions(data) {
+    this.set(this.ACTIONS, data);
+    this.actions = data;
   }
 
   unpackValues(values, items) {
@@ -162,6 +169,10 @@ export class DataProvider {
 
   getRiskyEvents() {
     return this.riskyEvents;
+  }
+
+  getPlanActions() {
+    return this.actions;
   }
 }
 

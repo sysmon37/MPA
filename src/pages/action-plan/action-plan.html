@@ -20,24 +20,24 @@
           <ion-datetime displayFormat="YYYY-MM-DD" [(ngModel)]="startTime" disabled></ion-datetime>
         </ion-item>        
         <ion-item>
-            <ion-label>Start Time</ion-label>
+            <ion-label>Start time</ion-label>
             <ion-datetime displayFormat="HH:mm" [(ngModel)]="startTime" [max]="endTime"></ion-datetime>
           </ion-item>        
         <ion-item>
-            <ion-label>End Time</ion-label>
+            <ion-label>End time</ion-label>
             <ion-datetime displayFormat="HH:mm" [(ngModel)]="endTime" [min]="startTime"></ion-datetime>
           </ion-item>        
       </ion-list>
-      <ion-list no-lines>
+      <!-- <ion-list no-lines>
         <ion-item>
           <ion-input placeholder="Enter action description" type="text" [(ngModel)]="action.title" clearInput=true></ion-input>
         </ion-item>
-      </ion-list>
+      </ion-list> -->
       <ion-list>
-        <ion-list-header>Action Items</ion-list-header>
+        <ion-list-header>Specify what you need to do</ion-list-header>
         <ion-item *ngFor="let item of action.items; let i = index; trackBy:trackByIndex">
           <ion-label>{{i + 1}}</ion-label>
-          <ion-input type="text" placeholder="Enter description of item {{i + 1}}" clearInput=true [(ngModel)]="action.items[i]"></ion-input>          
+          <ion-input type="text" placeholder="Enter description of action {{i + 1}}" clearInput=true [(ngModel)]="action.items[i]"></ion-input>          
         </ion-item>
       </ion-list>
 </ion-content>

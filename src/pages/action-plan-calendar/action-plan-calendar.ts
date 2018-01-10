@@ -1,3 +1,4 @@
+import { DataProvider } from './../../providers/data/data';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { CalendarComponent } from 'ionic2-calendar/calendar';
@@ -23,9 +24,10 @@ export class ActionPlanCalendarPage {
   protected selectedDate = null;
   protected editedAction = null;
   
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, protected dataService: DataProvider) {
     this.todayDate.setHours(0, 0, 0, 0);
     this.selectedDate = new Date(this.todayDate);
+    this.actions = this.dataService.getPlanActions();
   }
 
   ionViewDidLoad() {
@@ -44,8 +46,8 @@ export class ActionPlanCalendarPage {
       this.actions.push(this.editedAction);
       this.editedAction.isNew = false;
     }
+    this.dataService.setPlanActions(this.actions);
     this.calendar.loadEvents();
-    // this.dataService.setRiskyEvents(this.riskyEvents);
     console.log(this.actions);
   }
 
@@ -53,7 +55,7 @@ export class ActionPlanCalendarPage {
     let startTime = new Date(this.selectedDate);
     let endTime = new Date(startTime);
     startTime.setHours(12, 0, 0, 0);
-    endTime.setHours(12, 30, 0, 0);
+    endTime.setHours(13, 0, 0, 0);
 
     this.editedAction = {
       allDay: false,
@@ -61,6 +63,8 @@ export class ActionPlanCalendarPage {
       startTime: startTime,
       endTime: endTime,
       items: ['', '', '', '', ''],
+      values: [false, false, false, false, false],
+      notes: '',
       isNew: true
     };
     console.log(this.editedAction);

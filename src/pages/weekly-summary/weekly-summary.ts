@@ -89,7 +89,7 @@ export class WeeklySummaryPage {
           {
             fill:false,
             label: 'Overall Feeling',
-            data: [65, 46, 67, 60, 62, 69, 65],
+            data: [60, 50, 70, 60, 60,70, 60],
             backgroundColor: 'rgba(210,105,30,0.8)',
             borderColor: 'rgba(210,105,30,0.6)',
         },

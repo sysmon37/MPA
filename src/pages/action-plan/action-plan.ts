@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import moment from 'moment';
-import { takeUntil } from 'rxjs/operator/takeUntil';
 
 /**
  * Generated class for the ActionPlanPage page.
@@ -34,8 +33,8 @@ export class ActionPlanPage {
   ionViewWillLeave(){
     console.log('ionViewWillLeave ActionPlanPage');
     // moment(localDateString).toISOString(); 
-    // this.action.startTime = new Date(moment(this.startTime).toISOString());
-    // this.action.endTime = new Date(moment(this.endTime).toISOString());
+    this.action.startTime = new Date(moment(this.startTime).toISOString());
+    this.action.endTime = new Date(moment(this.endTime).toISOString());
 
     let nonEmpty = this.action.items.filter((value, index, array) => value != '');
     for (let i in this.action.items) {

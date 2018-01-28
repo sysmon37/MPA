@@ -54,7 +54,7 @@ export class ActionPlanCalendarPage {
   onAddAction() {
     let startTime = new Date(this.selectedDate);
     let endTime = new Date(startTime);
-    startTime.setHours(12, 0, 0, 0);
+    startTime.setHours(11, 0, 0, 0);
     endTime.setHours(13, 0, 0, 0);
 
     this.editedAction = {

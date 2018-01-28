@@ -25,7 +25,7 @@ export class ProsPage {
         {title: 'Emotional Wellbeing', content: 'You will feel more optimistic, have more energy and enjoy life more', image: 'emotional-1'}
       ]},
       {pos: 0, imageUrl: '', subItems: [
-        {title: 'Social Wellbeing', content: 'Your partner will be relieved because you can likely share a longer and healthier life together', image: '-social-1'},
+        {title: 'Social Wellbeing', content: 'Your partner will be relieved because you can likely share a longer and healthier life together', image: 'social-2'},
         {title: 'Purposeful Wellbeing', content: 'You will set a great example for others', image: 'purposeful-3'}
       ]},
       { pos: 0, imageUrl: '', subItems: [

@@ -18,6 +18,9 @@ export class DataProvider {
   readonly INVOKED_ACTIONS: string = "invoked_actions";
   readonly RISKY_EVENTS: string = "risky_events";
   readonly ACTIONS: string = "actions";
+  readonly UNDERSTOOD_PROS: string = "understood_pros";
+
+  public readonly MIN_UNDERSTOOD_PROS = 3;
 
   protected scenario = null;
 
@@ -29,6 +32,9 @@ export class DataProvider {
   protected invokedActions = [];
   protected riskyEvents = [];
   protected actions = [];
+  protected understoodPros = [];
+
+  protected showCommitmentPopup: boolean = true;
 
   constructor(public storage: Storage) {
     console.log('DataProvider');
@@ -173,6 +179,39 @@ export class DataProvider {
 
   getPlanActions() {
     return this.actions;
+  }
+
+  setUndestoodPros(data) {
+    this.set(this.UNDERSTOOD_PROS, data);
+    this.understoodPros = data;    
+  }
+  addUnderstoodPro(id) {
+    if (this.understoodPros.indexOf(id) == -1) {
+      this.understoodPros.push(id);
+      this.set(this.UNDERSTOOD_PROS, this.understoodPros);
+    }
+  }
+
+  removeUnderstoodPro(id) {
+    let index = this.understoodPros.indexOf(id);
+    if (index != -1) {
+      this.understoodPros.splice(index, 1);
+      this.set(this.UNDERSTOOD_PROS, this.understoodPros);
+      if (this.understoodPros.length < this.MIN_UNDERSTOOD_PROS)
+        this.showCommitmentPopup = true;
+    }
+  }
+
+  getUnderstoodPros() {
+    return this.understoodPros;
+  }
+
+  getShowCommitmentPopup() {
+    return this.showCommitmentPopup;
+  }
+
+  setShowCommitmentPopup(v) {
+    this.showCommitmentPopup = v;
   }
 }
 

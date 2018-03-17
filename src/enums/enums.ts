@@ -63,3 +63,14 @@ export enum Action {
     Barriers,
     SelfReevaluation
 };
+
+export enum Pro {
+    Purposeful1,
+    Purposeful2,
+    Purposeful3,
+    Emotional1,
+    Emotional2,
+    Behavioral,
+    Social,
+    Physicial
+};

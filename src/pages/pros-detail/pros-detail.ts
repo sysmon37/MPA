@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { DataProvider } from '../../providers/data/data';
 
 /**
  * Generated class for the ProsDetailPage page.
@@ -15,19 +16,23 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class ProsDetailPage {
 
-  protected title = '';
-  protected itemContent = '';
-  protected itemImageUrl = '';
+  protected understood;
+  protected item = null;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    let item = navParams.get('item');
-    this.title = item.title;
-    this.itemContent = item.content;
-    this.itemImageUrl = item.imageUrl;
+  constructor(public navCtrl: NavController, public navParams: NavParams, private dataService: DataProvider) {
+    this.item = navParams.get('item'); 
+    this.understood = this.dataService.getUnderstoodPros().indexOf(this.item.id) != -1;
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProsDetailPage');
+    console.log(this.item);
   }
 
+  update(){
+   if (this.understood) 
+     this.dataService.addUnderstoodPro(this.item.id);
+   else
+      this.dataService.removeUnderstoodPro(this.item.id);
+  }
 }

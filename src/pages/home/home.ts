@@ -24,6 +24,7 @@ export class HomePage {
     this.showIntro = (this.scenario == 1);
     this.showIntro = false;
     this.dataService.setScenario(this.scenario);
+    this.dataService.setUndestoodPros([]);
     
     this.items = [
       {title: "Patient Education", iconName: "book", targetPage: "EducationPage", scenarios: [1, 2, 3]},

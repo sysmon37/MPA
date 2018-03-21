@@ -32,16 +32,21 @@
 
   <ion-list no-lines>
     <ion-list-header>
-      Daily engagement
+      Your Daily engagement score
+      <button ion-button item-right icon-only clear (click)="showEngagementInfo()">
+        <ion-icon name="information-circle" ></ion-icon>
+      </button>
     </ion-list-header>
-    <ion-item>
+    <ion-item item-centered>
       <ion-label class="score">
       {{engagementScore}}%
-      <ion-icon *ngFor="let star of stars" [name]="starName(star)" item-first color='light_green' style='font-size:38px'></ion-icon>
+      <ion-icon *ngFor="let star of stars" [name]="starName(star)" item-first color='light_green' class='star-icon'></ion-icon>
       </ion-label>
-      <button *ngIf="showImprovement" ion-button item-end clear icon-end style="font-size:18px;" (click)="improveEngagement()">
-        Improve
-        <ion-icon name="arrow-round-forward"></ion-icon>
+    </ion-item>
+    <ion-item text-wrap>
+      <p>Your engagement score for today may still be improved. Click the button below to do it.</p>
+      <button *ngIf="showImprovement" ion-button large block color="secondary" (click)="improveEngagement()">
+        Improve Your Engagement Score        
       </button>
     </ion-item>
   </ion-list>
@@ -53,9 +58,7 @@
     <ion-item *ngFor="let item of drugs">
       <ion-thumbnail item-start><img [src]="item.imageUrl"></ion-thumbnail>
       <ion-label><h2>{{item.title}}</h2><p>{{item.description}}</p></ion-label>        
-      <button *ngFor="let dose of item.doses" ion-button item-end small [color]="color(dose.value, DRUG)">
-        <ion-icon [name]="iconName(dose.value, DRUG)" large></ion-icon>
-      </button>
+      <ion-icon *ngFor="let dose of item.doses" [name]="iconName(dose.value, DRUG)" [color]="color(dose.value, DRUG)" class="answer-icon" item-right large></ion-icon>
     </ion-item>
   </ion-list>
 
@@ -65,9 +68,7 @@
     </ion-list-header>
     <ion-item *ngFor="let item of nutrients" [hidden]="item.value=='?'">
       <ion-label><h2>{{item.title}}</h2><p>{{item.description}}</p></ion-label>        
-      <button ion-button item-end small [color]="color(item.value, NUTRIENT)">
-        <ion-icon [name]="iconName(item.value, NUTRIENT)" large></ion-icon>
-      </button>    
+      <ion-icon [color]="color(item.value, NUTRIENT)" [name]="iconName(item.value, NUTRIENT)" class="answer-icon" item-right large></ion-icon>
     </ion-item>
   </ion-list>  
 
@@ -77,9 +78,10 @@
     </ion-list-header>
     <ion-item *ngFor="let item of symptoms" [hidden]="item.value=='?'">
       <ion-label>{{item.title}}</ion-label>        
-      <button ion-button item-end small [color]="color(item.value, SYMPTOM)">
+      <ion-icon [color]="color(item.value, SYMPTOM)" [name]="iconName(item.value, SYMPTOM)" class="answer-icon" item-right large></ion-icon>
+      <!-- <button ion-button item-end small clear [color]="color(item.value, SYMPTOM)">
         <ion-icon [name]="iconName(item.value, SYMPTOM)" large></ion-icon>
-      </button>    
+      </button>     -->
   
     </ion-item>
   </ion-list>

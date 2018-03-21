@@ -1,11 +1,20 @@
 page-daily-summary {
-    .large-icon {
-        font-size:34px;
+    .star-icon {
+        font-size:28px;
      }
 
      .score {
-         font-size:24px;
+         font-size:32px;
          font-weight: bold;
+     }
+
+     .answer-icon {
+        width:20px;text-align:right
+     }
+
+     .engagement-info {
+         font-size:12px;
+         color: "gray";
      }
 }
 

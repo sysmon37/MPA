@@ -29,7 +29,7 @@ export class ProsDetailPage {
     console.log(this.item);
   }
 
-  update(){
+  updateUnderstood(){
    if (this.understood) 
      this.dataService.addUnderstoodPro(this.item.id);
    else

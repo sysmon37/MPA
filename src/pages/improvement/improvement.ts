@@ -52,8 +52,9 @@ export class ImprovementPage {
   }
 
   valueChanged(item, value) {
+    if (item.value == "?")
+      this.showNextPendingQuestion();
     item.value = value;
-    this.showNextPendingQuestion();
   }
 
   collectPendingQuestions() {

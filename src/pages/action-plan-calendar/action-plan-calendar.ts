@@ -71,10 +71,16 @@ export class ActionPlanCalendarPage {
     this.navCtrl.push("ActionPlanPage", {action: this.editedAction});
   }
 
-  onActionSelected(event) {
+  /**onActionSelected(event) {
     console.log("Action selected = " + event.title);
     this.editedAction = event;
     this.navCtrl.push("ActionPlanPage", {action: this.editedAction});
+  }
+*/
+  onActionSelected(event) {
+    console.log("Action selected = " + event.title);
+    this.editedAction = event;
+    this.navCtrl.push("ActionPlanReminderPage", {action: this.editedAction});
   }
 
   onDateChanged(event) {

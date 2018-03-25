@@ -15,7 +15,8 @@
 
 
 <ion-content padding class="has-header">
-  <button ion-button block outline [disabled]="this.actions.length==0" (click)="onTestReminder()">Test Reminder</button>
+  <!--<button ion-button block outline [disabled]="this.actions.length==0" (click)="onTestReminder()">Test Reminder</button>-->
+  Tap on event to view its reminder
   <calendar 
     [eventSource]="actions" 
     [calendarMode]="calendarMode" 
@@ -25,3 +26,4 @@
     (onEventSelected)="onActionSelected($event)">
   </calendar>
 </ion-content>
+

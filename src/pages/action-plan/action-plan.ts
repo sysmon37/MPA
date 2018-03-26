@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import moment from 'moment';
 
 /**
@@ -19,13 +19,14 @@ export class ActionPlanPage {
   protected startTime: string = '';
   protected endTime: string = '';
   protected action: any = null;
+  protected timeNeeded: null;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) { 
+  constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl : AlertController) { 
     this.action = this.navParams.get('action');
     this.startTime = moment(this.action.startTime).format();
     this.endTime = moment(this.action.endTime).format();  
+    
   }
-
   ionViewDidLoad() {
     console.log('ionViewDidLoad ActionPlanPage');
   }
@@ -33,8 +34,9 @@ export class ActionPlanPage {
   ionViewWillLeave(){
     console.log('ionViewWillLeave ActionPlanPage');
     // moment(localDateString).toISOString(); 
-    this.action.startTime = new Date(moment(this.startTime).toISOString());
-    this.action.endTime = new Date(moment(this.endTime).toISOString());
+    let m = moment(this.startTime);
+    this.action.startTime = new Date(m.toISOString());
+    this.action.endTime = new Date(m.add(this.action.duration, 'minutes').toISOString());
 
     let nonEmpty = this.action.items.filter((value, index, array) => value != '');
     for (let i in this.action.items) {
@@ -52,6 +54,15 @@ export class ActionPlanPage {
 
   trackByIndex(index, value) {
     return index;
+  }
+
+  showActionInfo() {
+    let alert = this.alertCtrl.create({
+      title: 'Possible Actions',
+      subTitle: 'Examples of possible actions include: taking prescribed medications before or after meal, exercising or performing other physical activities, or reflecting before going to bed about how your engagement was that day.',
+      buttons: ['OK']
+    });
+    alert.present();  
   }
 
 }

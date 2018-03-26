@@ -21,12 +21,33 @@
         </ion-item>        
         <ion-item>
             <ion-label>Start time</ion-label>
-            <ion-datetime displayFormat="HH:mm" [(ngModel)]="startTime" [max]="endTime"></ion-datetime>
-          </ion-item>        
-        <ion-item>
+            <ion-datetime displayFormat="HH:mm" [(ngModel)]="startTime"></ion-datetime>
+        </ion-item>        
+        <!-- <ion-item>
             <ion-label>End time</ion-label>
-            <ion-datetime displayFormat="HH:mm" [(ngModel)]="endTime" [min]="startTime"></ion-datetime>
-          </ion-item>        
+            <ion-datetime displayFormat="HH:mm" [(ngModel)]="endTime" disabled></ion-datetime>
+        </ion-item>         -->
+        <ion-item>
+          <ion-label>Time needed</ion-label>
+          <ion-select [(ngModel)] = "action.duration">
+              <ion-option value=5>5 min</ion-option>
+              <ion-option value=10>10 min</ion-option>
+              <ion-option value=15>15 min</ion-option>
+              <ion-option value=20>20 min</ion-option>
+              <ion-option value=30>30 min</ion-option>
+              <ion-option value=45>45 min</ion-option>
+              <ion-option value=60>1 h</ion-option>
+              <ion-option value=90>1.5 h</ion-option>
+              <ion-option value=120>2 h</ion-option>
+              <ion-option value=150>2.5 h</ion-option>
+              <ion-option value=180>3 h</ion-option>
+              <ion-option value=240>4 h</ion-option>
+              <ion-option value=300>5 h</ion-option>
+              <ion-option value=360>6 h</ion-option>
+              <ion-option value=420>7 h</ion-option>
+              <ion-option value=480>8 h</ion-option>
+          </ion-select>
+        </ion-item>
       </ion-list>
       <!-- <ion-list no-lines>
         <ion-item>
@@ -34,7 +55,11 @@
         </ion-item>
       </ion-list> -->
       <ion-list>
-        <ion-list-header>Specify what you need to do</ion-list-header>
+        <ion-list-header>Specify what you need to do
+          <button ion-button item-right icon-only clear (click)="showActionInfo()">
+            <ion-icon name="information-circle" ></ion-icon>
+          </button>
+        </ion-list-header>
         <ion-item *ngFor="let item of action.items; let i = index; trackBy:trackByIndex">
           <ion-label>{{i + 1}}</ion-label>
           <ion-input type="text" placeholder="Enter description of action {{i + 1}}" clearInput=true [(ngModel)]="action.items[i]"></ion-input>          

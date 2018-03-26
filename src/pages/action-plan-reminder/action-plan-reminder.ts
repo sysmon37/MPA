@@ -16,16 +16,17 @@ import moment from 'moment';
 })
 export class ActionPlanReminderPage {
 
-  protected date: string = '';
+  // protected date: string = '';
   protected startTime: string = '';
-  protected endTime: string = '';
+  // protected endTime: string = '';
   protected action: any = null;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.action = this.navParams.get('action');
-    this.date = moment(this.action.startTime).format('YYYY-MM-DD');
-    this.startTime = moment(this.action.startTime).format('HH:mm');
-    this.endTime = moment(this.action.endTime).format('HH:mm');
+    // console.log(this.action);
+    // this.date = moment(this.action.startTime).format('YYYY-MM-DD');
+    this.startTime = moment(this.action.startTime).format();
+    // this.endTime = moment(this.action.endTime).format('HH:mm');
   }
 
   ionViewWillLeave(){

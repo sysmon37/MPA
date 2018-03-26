@@ -26,7 +26,7 @@ export class BehaviorChangePage {
       {title: 'Pros of Engagement', targetPage: "ProsPage", disabled: 0, scenarios: [1], special: 0},
       {id: Action.Barriers, title: 'Barriers to Engagement', targetPage: "BarriersPage", disabled: 0, scenarios: [2], special: 0},
       {id: Action.SelfReevaluation, title: 'Self-reevaluation', targetPage: "SelfReevaluationPage", disabled: 0, scenarios: [2], special: 0},
-      {title: 'Action Plan', targetPage: "ActionPlanCalendarPage", disabled: 0, scenarios: [2, 3], special: 1}
+      {title: 'Action Plan', targetPage: "ActionPlanCalendarPage", disabled: 0, scenarios: [2, 3], special: 0}
     ];
     this.scenario = this.dataService.getScenario();
     console.log("Scenario = " + this.scenario);

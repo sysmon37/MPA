@@ -17,12 +17,33 @@
   <ion-list no-lines>
     <ion-item>
       <ion-label>Date</ion-label>
-      <ion-note item-end>{{date}}</ion-note>
+      <ion-datetime displayFormat="YYYY-MM-DD" [(ngModel)]="startTime" disabled></ion-datetime>
     </ion-item>        
     <ion-item>
-        <ion-label>Time</ion-label>
-        <ion-note item-end>{{startTime}} - {{endTime}}</ion-note>
-      </ion-item>        
+      <ion-label>Start time</ion-label>
+      <ion-datetime displayFormat="HH:mm" [(ngModel)]="startTime" disabled></ion-datetime>
+   </ion-item>        
+    <ion-item>
+      <ion-label>Time needed</ion-label>
+      <ion-select disabled [(ngModel)] = "action.duration">
+          <ion-option value=5>5 min</ion-option>
+          <ion-option value=10>10 min</ion-option>
+          <ion-option value=15>15 min</ion-option>
+          <ion-option value=20>20 min</ion-option>
+          <ion-option value=30>30 min</ion-option>
+          <ion-option value=45>45 min</ion-option>
+          <ion-option value=60>1 h</ion-option>
+          <ion-option value=90>1.5 h</ion-option>
+          <ion-option value=120>2 h</ion-option>
+          <ion-option value=150>2.5 h</ion-option>
+          <ion-option value=180>3 h</ion-option>
+          <ion-option value=240>4 h</ion-option>
+          <ion-option value=300>5 h</ion-option>
+          <ion-option value=360>6 h</ion-option>
+          <ion-option value=420>7 h</ion-option>
+          <ion-option value=480>8 h</ion-option>
+      </ion-select>
+    </ion-item>
   </ion-list>
   <!-- <ion-list no-lines>
     <ion-item class="title">{{title}}</ion-item>

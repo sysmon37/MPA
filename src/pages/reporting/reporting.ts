@@ -22,10 +22,10 @@ export class ReportingPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, private dataService: DataProvider) {
     this.itemGroups = [
       { 
-        title: 'Compliance', 
+        title: 'Adherence', 
         items: [      
-          {title: 'Diet Compliance', targetPage: "DietNonCompliancePage", disabled: 0, scenarios: [2], special: 0},
-          {title: 'Treatment Compliance', targetPage: "TreatmentNonCompliancePage", disabled: 0, scenarios: [2], special: 0}
+          {title: 'Diet Adherence', targetPage: "DietNonCompliancePage", disabled: 0, scenarios: [2], special: 0},
+          {title: 'Treatment Adhrence', targetPage: "TreatmentNonCompliancePage", disabled: 0, scenarios: [2], special: 0}
         ],
         scenarios: [2]
       },

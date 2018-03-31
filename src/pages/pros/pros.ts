@@ -65,7 +65,7 @@ export class ProsPage {
     if (this.dataService.getUnderstoodPros().length >= this.dataService.MIN_UNDERSTOOD_PROS && this.dataService.getShowCommitmentPopup()) {
       let alert = this.alertCtrl.create({
           title: 'Congratulations',
-          subTitle: 'You have realized different kinds of well-being that may result from your engagement and compliance. This is a first significant step in which you have demonstrated your commitment',
+          subTitle: 'You have realized different kinds of well-being that may result from your engagement and adherence. This is a first significant step in which you have demonstrated your commitment',
           buttons: ['OK']
        });
       alert.present();        

@@ -18,14 +18,27 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class InterviewPage {
 
   protected items = [];
+  protected itemGroups = [];
   protected highlighted = false;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, protected dataService : DataProvider) {
+
+    this.itemGroups = [
+      {
+        title: 'Facts on AFib',
+        items: []
+      },
+      {
+        title: 'Facts on anticoagulation',
+        items: []
+      }      
+    ]
+    
     this.items = [
-      {id: Material.InterviewQA1, question: 'Do you have any obstacles from compliance?',  
-      answer: 'Compliance has never been an issue for me, I take regularly my pills. I know that during a chronic treatment it is important to avoid big changes in drug concentration in our body, and this is just what happens when you skip doses. For my comfort I want to be protected by the drug during the whole day.'},
+      {id: Material.InterviewQA1, question: 'Do you have any obstacles from adherence?',  
+      answer: 'Adherence has never been an issue for me, I take regularly my pills. I know that during a chronic treatment it is important to avoid big changes in drug concentration in our body, and this is just what happens when you skip doses. For my comfort I want to be protected by the drug during the whole day.'},
       {id: Material.InterviewQA2, question: 'Did you get your knowledge from physicians?',  
-      answer: 'Nobody gave me explanations about drugs and about the importance of compliance. I recognize that this is an issue for many patients, and I would have appreciated more explanations from my doctors. On the other hand, whenever I asked doctors, they provided satisfactory answers (this is to say that doctors are not proactive in giving spontaneous explanations).'},
+      answer: 'Nobody gave me explanations about drugs and about the importance of adherence. I recognize that this is an issue for many patients, and I would have appreciated more explanations from my doctors. On the other hand, whenever I asked doctors, they provided satisfactory answers (this is to say that doctors are not proactive in giving spontaneous explanations).'},
       {id: Material.InterviewQA3, question: 'Why did you have the ablation procedure?',  
       answer: 'Amiodarone shows a long-term toxicity (<i>this is information that Michele knows, but most patients do not</i>). I am getting old, and I would like to avoid damaging my liver or my kidneys, that would be a big problem in some years. AFib symptoms were worsening. I had a couple of episodes with associated severe dizziness  that also led to hospital admission. Also my wife was becoming stressed by those episodes. Multiple drug regimen in the long term caused a continuous sense of fatigue. Ablation is a surgical intervention, and if it is my last chance to recover from AF symptoms, it’s better to do it now (<i>Michele is 78 years old</i>).'},
       {id: Material.InterviewQA4, question: 'Does dietary care bother you?',  

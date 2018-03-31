@@ -29,9 +29,9 @@ export class WeeklySummaryPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.items = [
-      {title: 'Compliance Scores', color: 'custom_1'},
-      {title: 'Medication Compliance', color: 'custom_2'},
-      {title: 'Diet Compliance', color: 'custom_3'},
+      {title: 'Adherence Scores', color: 'custom_1'},
+      {title: 'Medication Adherence', color: 'custom_2'},
+      {title: 'Diet Adherence', color: 'custom_3'},
       {title: 'Engagement Actions', color: 'custom_4'},
     ];
   }

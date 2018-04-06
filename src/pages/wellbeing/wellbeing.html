@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-navbar>
+  <ion-title>
+    Wellbeing
+  </ion-title>
+</ion-navbar>
+</ion-header>
+
+<ion-content padding >
+<ion-list>
+  <ng-container *ngFor="let item of items" >
+    <button ion-button large icon-left block (click)="openItemDetailPage(item)">
+      <ion-icon name="{{item.iconName}}"></ion-icon>{{item.title}}
+    </button>
+  </ng-container>
+</ion-list>
+</ion-content>

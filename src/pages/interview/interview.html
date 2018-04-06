@@ -20,7 +20,7 @@
     </p>
 
   <ion-list>
-    <button text-wrap ion-item *ngFor="let item of items" [color]="color(item)" (click)="openInterviewDetailPage(item)">{{item.question}}</button>
+    <button text-wrap ion-item no-lines *ngFor="let item of items" [color]="color(item)" (click)="openInterviewDetailPage(item)">{{item.question}}</button>
   </ion-list>
 
 </ion-content>

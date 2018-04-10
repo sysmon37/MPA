@@ -20,20 +20,23 @@ export class WellbeingPage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.items = [
       {title: "Body", iconName: "man", subItems: [
-        {title: 'Physical wellbeing', content: 'You will have more energy to do things you like', image: 'physical-1'},
-        {title: 'Behavioral wellbeing', content: 'You will be more comfortable talking about your health with your family and health support team', image: 'purposeful-2'}
+        {title: '', content: 'By lowering chances of stroke, you will maintain good health', image: 'body-1'},
+        {title: '', content: 'You will be more comfortable talking about your health with your family and health support team', image: 'body-2'}
       ]},
       {title: "Mind", iconName: "bulb", subItems: [
-        {title: 'Emotional wellbeing', content: 'You will feel more optimistic about your future and enjoy life more', image: 'emotional-1'}
+        {title: '', content: 'You will feel more optimistic about your future and enjoy life more', image: 'mind-1'},
+        {title: '', content: 'By following anticoagulation therapy and lowering your risk of stroke, you will reduce healthcare costs for yourself and your family', image: ''},
+        {title: '', content: 'You will be able to engage in meaningful activities', image: 'mind-3'}
       ]},
       {title: "Relationships", iconName: "contacts", subItems: [
-        {title: 'Social wellbeing', content: 'You will be able to make long-term plans with your family and friends', image:'social-2'}
+        {title: '', content: 'You will be able to make long-term plans with your family and friends', image:'relations-1'},
+        {title: '', content: 'You will be able to live your life fully and participate in activities you enjoy', image:'relations-2'}
       ]}
     ];
 
     for (let item of this.items) 
       for (let subItem of item.subItems)
-      subItem.imageUrl = `/assets/${subItem.image}.jpg`;
+        subItem.imageUrl = subItem.image != '' ? `/assets/${subItem.image}.jpg` : '';
   }
 
   ionViewDidLoad() {

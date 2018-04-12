@@ -23,8 +23,8 @@ export class BehaviorChangePage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private dataService: DataProvider) {
     this.items = [
-      {title: 'Pros of Engagement', targetPage: "ProsPage", disabled: 0, scenarios: [1], special: 0},
-      {title: 'Wellbeings', targetPage: "WellbeingPage", disabled: 0, scenarios: [1], special: 0},
+      // {title: 'Pros of Engagement', targetPage: "ProsPage", disabled: 0, scenarios: [1], special: 0},
+      {title: 'Pros of Engagement', targetPage: "WellbeingPage", disabled: 0, scenarios: [1], special: 0},
       {id: Action.Barriers, title: 'Barriers to Engagement', targetPage: "BarriersPage", disabled: 0, scenarios: [2], special: 0},
       {id: Action.SelfReevaluation, title: 'Self-reevaluation', targetPage: "SelfReevaluationPage", disabled: 0, scenarios: [2], special: 0},
       {title: 'Action Plan', targetPage: "ActionPlanCalendarPage", disabled: 0, scenarios: [2, 3], special: 0}

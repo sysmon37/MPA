@@ -25,7 +25,7 @@ export class WellbeingPage {
       ]},
       {title: "Mind", iconName: "bulb", subItems: [
         {title: '', content: 'You will feel more optimistic about your future and enjoy life more', image: 'mind-1'},
-        {title: '', content: 'By following anticoagulation therapy and lowering your risk of stroke, you will reduce healthcare costs for yourself and your family', image: ''},
+        {title: '', content: 'By following anticoagulation therapy and lowering your risk of stroke, you will reduce healthcare costs for yourself and your family', image: 'mind-2'},
         {title: '', content: 'You will be able to engage in meaningful activities', image: 'mind-3'}
       ]},
       {title: "Relationships", iconName: "contacts", subItems: [

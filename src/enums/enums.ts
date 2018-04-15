@@ -65,12 +65,19 @@ export enum Action {
 };
 
 export enum Pro {
-    Purposeful1,
+    Purposeful1 = 0,
     Purposeful2,
     Purposeful3,
     Emotional1,
     Emotional2,
     Behavioral,
     Social,
-    Physicial
+    Physicial,
+    Body1 = 0,
+    Body2,
+    Mind1,
+    Mind2,
+    Mind3,
+    Relations1,
+    Relations2
 };

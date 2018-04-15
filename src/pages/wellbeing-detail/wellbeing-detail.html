@@ -14,14 +14,13 @@
 
 
 <ion-content padding>
-  <ion-content padding>
-    <ion-grid no-padding> 
+    <!-- <ion-grid no-padding> 
       <ng-container *ngFor="let subItem of item.subItems">
-        <!-- <ion-row text-center>
+        <ion-row text-center>
           <ion-col col-12>
             <h3>{{subItem.title}}</h3>
           </ion-col>
-        </ion-row> -->
+        </ion-row>
         <ion-row text-center>
           <ion-col col-12>
             <img [src]="subItem.imageUrl">
@@ -34,5 +33,19 @@
           <ion-col col-12></ion-col>
         </ion-row>
       </ng-container>
-    </ion-grid>
+    </ion-grid> -->
+
+  <ion-card *ngFor="let subItem of item.subItems">
+    <ion-item color="primary" text-center>
+      {{subItem.title}}
+    </ion-item>
+    <img [src]="subItem.imageUrl"/>
+    <ion-card-content>
+      <p class="message">{{subItem.content}}</p>
+    </ion-card-content>
+    <ion-item no-lines class="checkbox">
+        <ion-label>I understand benefits of this pro</ion-label>
+        <ion-checkbox  color="secondary" [(ngModel)]="understood[subItem.id]" (ionChange)="updateUnderstood(subItem)"></ion-checkbox>
+      </ion-item>  
+  </ion-card>
 </ion-content>

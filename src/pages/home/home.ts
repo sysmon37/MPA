@@ -1,6 +1,7 @@
 import { DataProvider } from './../../providers/data/data';
 import { Component } from '@angular/core';
 import { NavController, NavParams, IonicPage } from 'ionic-angular';
+import moment from 'moment';
 
 @IonicPage({
   segment: 'scenario/:scenario'
@@ -29,7 +30,8 @@ export class HomePage {
     this.items = [
       {title: "Patient Education", iconName: "book", targetPage: "EducationPage", scenarios: [1, 2, 3]},
       {title: "Behavior Modification", iconName: "body", targetPage: "BehaviorChangePage", scenarios: [1, 2, 3]},
-      {title: "Reporting", iconName: "create", targetPage: "ReportingPage", scenarios: [2, 3]}
+      {title: "Reporting", iconName: "create", targetPage: "ReportingPage", scenarios: [2, 3]},
+      {title: "Goal Setting", iconName: "create", targetPage: "GoalPage", scenarios: [2, 3]}
     ];
   }
   
@@ -53,7 +55,15 @@ export class HomePage {
   }
    
   openItemDetailPage(item) {
-    this.navCtrl.push(item.targetPage);
+    if (item.targetPage == "GoalPage") {
+      console.log('GoalPage identified')
+      let goal = {
+        deadline: moment().add(92, 'days'),
+        items: ['Loose 5 pounds', 'Not miss more than 1 DOAC dose', '', '', '']        
+      };
+      this.navCtrl.push(item.targetPage, {goal: goal});
+    } else
+      this.navCtrl.push(item.targetPage);
   }
 
 }

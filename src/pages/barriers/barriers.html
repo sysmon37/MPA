@@ -15,7 +15,8 @@
 <ion-content padding>
   <p>Explore possible barriers to engagement listed below and learn what actions to take in order to mitigate/avoid them</p>
   <ion-list>
-    <button ion-item icon-left text-wrap *ngFor="let item of items" no-lines [disabled]="item.disabled" (click)="openItemDetailPage(item)">
+    <!-- <button ion-item icon-left text-wrap *ngFor="let item of items" no-lines [disabled]="item.disabled" (click)="openItemDetailPage(item)"> -->
+    <button ion-item icon-left text-wrap *ngFor="let item of items" no-lines (click)="openItemDetailPage(item)">
       <ion-icon name="alert"></ion-icon>{{item.title}}</button>
   </ion-list>
 

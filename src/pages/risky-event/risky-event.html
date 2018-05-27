@@ -13,23 +13,15 @@
 <ion-content padding>
     <!-- <img src="../../assets/warning.jpg"> -->
     
-    <ion-list>
+    <!-- <ion-list>
       <ion-item>
         <ion-label>Date</ion-label>
         <ion-datetime displayFormat="YYYY-MM-DD" [(ngModel)]="dateTime" disabled></ion-datetime>
       </ion-item>        
-        <!-- <ion-item>
-          <ion-label>All day</ion-label>
-          <ion-toggle [(ngModel)]="allDay"></ion-toggle>
-      </ion-item>      
-      <ion-item>
-        <ion-label>Time</ion-label>
-        <ion-datetime displayFormat="H:mm" [(ngModel)]="dateTime" [disabled]="allDay"></ion-datetime>
-      </ion-item>         -->
-    </ion-list>
+    </ion-list> -->
     
     <ion-list radio-group [(ngModel)]="selected" (ionChange)="onValueChanged()">
-      <ion-list-header>Event</ion-list-header> 
+      <ion-list-header>Will you undergo?</ion-list-header> 
       <ion-item *ngFor="let item of items">
         <ion-label>{{item.title}}</ion-label>
         <ion-radio [value]="item.id" (ionSelect)="onItemSelected(item)"></ion-radio>

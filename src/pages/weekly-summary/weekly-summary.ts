@@ -120,7 +120,7 @@ export class WeeklySummaryPage {
       this.detailedChart = new Chart(this.detailedCanvas.nativeElement, {
       type: 'horizontalBar',
       data: {
-        labels: ['Treatment', 'Diet', 'Symptom Reporting', 'Education', 'Behavior Modification'],
+        labels: ['Medications', 'Diet', 'Symptom Reporting', 'Education', 'Behavior Modification'],
         datasets: [
           {
             label: 'Average Weekly Ratings',

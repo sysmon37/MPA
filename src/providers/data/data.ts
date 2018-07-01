@@ -19,10 +19,12 @@ export class DataProvider {
   readonly RISKY_EVENTS: string = "risky_events";
   readonly ACTIONS: string = "actions";
   readonly UNDERSTOOD_PROS: string = "understood_pros";
+  readonly THERAPY_TYPE: string = "therapy_type";
 
   public readonly MIN_UNDERSTOOD_PROS = 3;
 
-  protected scenario = null;
+  protected scenario = 1;
+  protected therapyType = 1;
 
   protected drugs = null;
   protected symptoms = null;
@@ -63,6 +65,10 @@ export class DataProvider {
     return this.scenario;
   }
 
+  getTherapyType() {
+    return this.therapyType;
+  }
+
   set(key, data) {
     // let json = JSON.stringify(data);
     // this.storage.set(key, json);
@@ -89,6 +95,10 @@ export class DataProvider {
     this.scenario = data;
   }
 
+  setTherapyType(data) {
+    this.set(this.THERAPY_TYPE, data);
+    this.therapyType = data;
+  }
   setRiskyEvents(data) {
     this.set(this.RISKY_EVENTS, data);
     this.riskyEvents = data;

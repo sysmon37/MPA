@@ -13,7 +13,8 @@
 </ion-header>
 
 <ion-content padding>
-  <b>{{item.title}}</b>
-  <p [innerHTML]="item.content"></p>
-  <img [src]="item.image" *ngIf="item.image">
+<p><b>{{item.title}}</b></p>
+  <!-- <p [innerHTML]="item.content"></p> -->
+  <div [innerHTML]="item.content"></div>
+  <p><img [src]="item.image" *ngIf="item.image"></p>
 </ion-content> 

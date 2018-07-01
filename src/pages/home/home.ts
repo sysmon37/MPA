@@ -14,17 +14,21 @@ import moment from 'moment';
 
 export class HomePage {
 
-  private showIntro : boolean = true;
-  protected scenario : number;
+  private showIntro: boolean = true;
+  protected scenario: number;
+  protected therapyType: number;
   protected items = [];
 
-  constructor(public navCtrl: NavController, public navParams : NavParams,  private dataService: DataProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,  private dataService: DataProvider) {
     let s = Number(this.navParams.get('scenario'));
-    this.scenario = Math.min(2, Math.max(1, isNaN(s) ? 0 : s));
+    s = isNaN(s) ? 1 : s;
+    this.scenario = Math.min(2, Math.max(1, s % 10));
+    this.therapyType = Math.min(2, Math.max(1, Math.floor(s / 10)));
     console.info("Current scenario = " + this.scenario);
     this.showIntro = (this.scenario == 1);
     this.showIntro = false;
     this.dataService.setScenario(this.scenario);
+    this.dataService.setTherapyType(this.therapyType);
     this.dataService.setUndestoodPros([]);
     
     this.items = [

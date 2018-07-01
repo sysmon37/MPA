@@ -43,7 +43,9 @@ export class DailySummaryPage {
 
     constructor(public navCtrl: NavController, public navParams: NavParams, public dataService: DataProvider, private alertCtrl : AlertController) {
         this.drugs = [
-            { id: Treatment.Anticoagulant, title: "Dabigatran", description: 'Capsule, 150 mg, 2 x daily', imageUrl: '/assets/dabigatran-2x.jpg', value: '', doses: [{ value: '?' }, { value: '?' }] },
+            dataService.getTherapyType() == 1
+                ? { id: Treatment.Anticoagulant, title: "Warfarin", description: 'Tablet, 5 mg, 1 x daily', imageUrl: '/assets/warfarin-1x.jpg', value: '', doses: [{ value: '?' }] }
+                : { id: Treatment.Anticoagulant, title: "Dabigatran", description: 'Capsule, 150 mg, 2 x daily', imageUrl: '/assets/dabigatran-2x.jpg', value: '', doses: [{ value: '?' }, { value: '?' }] },
             { id: Treatment.RateControl, title: "Metoprolol", description: 'Tablet, 25 mg, 2 x daily', imageUrl: '/assets/metoprolol-2x.jpg', value: '', doses: [{ value: '?' }, { value: '?' }] }
         ];
 
@@ -54,7 +56,9 @@ export class DailySummaryPage {
         ];
 
         this.nutrients = [
-            { id: Nutrient.Minerals, title: 'Minerals', description: 'Magnesium and potassium', value: '?' }
+            dataService.getTherapyType() == 1
+                ? { id: Nutrient.Minerals, title: 'Vitamin K', description: '', value: '?' }
+                : { id: Nutrient.Minerals, title: 'Grapefruit juice', description: '', value: '?' }
         ];
 
         this.dataService.unpackMultiValues(this.dataService.getDrugs(), this.drugs);
@@ -90,7 +94,9 @@ export class DailySummaryPage {
                     name = value == '+' ? 'add' : 'remove';
                     break;
                 case this.NUTRIENT:
-                    name = value == '+' ? 'arrow-round-up' : value == '-' ? 'arrow-round-down' : 'checkmark';
+                    this.dataService.getTherapyType() == 1
+                        ? (name = value == '+' ? 'arrow-round-up' : value == '-' ? 'arrow-round-down' : 'checkmark')
+                        : (name = value == '=' ? 'remove' : 'add');
             }
         return name;
     }

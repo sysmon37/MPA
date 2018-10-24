@@ -33,7 +33,7 @@ export class SelfReevaluationSummaryPage {
     if (this.score >= 80)
       this.message  = "Congratulations! You are doing a great job in becoming a fully engaged patient.";
     else if (this.score >= 50) 
-      this.message = "Congratulations! You are on a right track to improve your engagements. Please be persistent in you efforts and repeat self-reevaluation soon.";
+      this.message = "Félicitations ! Les mesures que vous avez prises commencent à porter leurs fruits. Veuillez persévérer dans vos efforts et reprendre l’autoréévaluation bientôt.";
     else
       this.message = "We know you are trying hard to improve your engagement and appreciate it! Please take some more time to work on this and than repeat self-reevaluation.";
   }

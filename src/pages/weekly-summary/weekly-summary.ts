@@ -43,7 +43,7 @@ export class WeeklySummaryPage {
     this.peerCanvas = new Chart(this.peerCanvas.nativeElement, {
       type: 'horizontalBar',
       data: {
-        labels: ['You', 'Peers'],
+        labels: ['Vous', 'Semblables'],
         datasets: [{
           label: 'Average Weekly Engagement',
           data: [68, 77],
@@ -77,18 +77,18 @@ export class WeeklySummaryPage {
     this.overallChart = new Chart(this.overallCanvas.nativeElement, {
       type: 'line',
       data: {
-        labels: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+        labels: ['Dim.', 'Lun.', 'Mar.', 'Mer.', 'Jeu.', 'Ven.', 'Sam.'],
         datasets: [
           {
             fill:false,
-            label: 'Engagement',
+            label: 'Mobilisation',
             data: [23, 62, 75, 60, 67, 93, 95],
             backgroundColor: 'rgba(34,139,34, 0.6)',
             borderColor: 'rgba(34,139,34,0.8)'
           },
           {
             fill:false,
-            label: 'Overall Feeling',
+            label: 'Façon de se sentir',
             data: [60, 50, 70, 60, 60,70, 60],
             backgroundColor: 'rgba(210,105,30,0.8)',
             borderColor: 'rgba(210,105,30,0.6)',
@@ -120,7 +120,7 @@ export class WeeklySummaryPage {
       this.detailedChart = new Chart(this.detailedCanvas.nativeElement, {
       type: 'horizontalBar',
       data: {
-        labels: ['Medications', 'Diet', 'Symptom Reporting', 'Education', 'Behavior Modification'],
+        labels: ['Médicaments', 'Régime	alimentaire', 'Déclaration des symptômes', 'Éducation', 'Modification du comportement'],
         datasets: [
           {
             label: 'Average Weekly Ratings',

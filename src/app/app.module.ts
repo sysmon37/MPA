@@ -13,7 +13,7 @@ import { NgCalendarModule } from 'ionic2-calendar';
   imports: [
     BrowserModule,
     NgCalendarModule,
-    IonicModule.forRoot(MyApp, {mode: 'ios'}),
+    IonicModule.forRoot(MyApp, {mode: 'ios', backButtonText: 'Retour'}),
     IonicStorageModule.forRoot(),
   ],
   bootstrap: [IonicApp],

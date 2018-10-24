@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Daily Summary</ion-title>
+    <ion-title>Résumé quotidien</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -20,7 +20,7 @@
     
   <ion-list no-lines>
     <ion-list-header>
-      How do you feel today?        
+      COMMENT VOUS SENTEZ-VOUS AUJOURD’HUI ?        
     </ion-list-header>
     <ion-item>
       <ion-range [(ngModel)]="wellbeing" min="-5" max="5" steps=10>  
@@ -32,7 +32,7 @@
 
   <ion-list no-lines>
     <ion-list-header>
-      Your Daily engagement score
+      VOTRE INDICE DE MOBILISATION
       <button ion-button item-right icon-only clear (click)="showEngagementInfo()">
         <ion-icon name="information-circle" ></ion-icon>
       </button>
@@ -44,16 +44,16 @@
       </ion-label>
     </ion-item>
     <ion-item text-wrap>
-      <p>Your engagement score for today may still be improved. Click the button below to do it.</p>
+      <p>Il est encore possible d’améliorer votre indice de mobilisation d’aujourd’hui. Cliquez sur le bouton ci-dessous pour procéder.</p>
       <button *ngIf="showImprovement" ion-button large block color="secondary" (click)="improveEngagement()">
-        Improve Your Engagement Score        
+        Améliorez votre indice de mobilisation        
       </button>
     </ion-item>
   </ion-list>
 
   <ion-list no-lines *ngIf="showDrugs">
     <ion-list-header>
-      Right dosage taken
+      J’AI PRIS LA BONNE DOSE
     </ion-list-header>
     <ion-item *ngFor="let item of drugs">
       <ion-thumbnail item-start><img [src]="item.imageUrl"></ion-thumbnail>
@@ -64,7 +64,7 @@
 
   <ion-list no-lines *ngIf="showNutrients">
     <ion-list-header>
-      Right amount eaten
+      J’AI CONSOMMÉ LA BONNE QUANTITÉ
     </ion-list-header>
     <ion-item *ngFor="let item of nutrients" [hidden]="item.value=='?'">
       <ion-label><h2>{{item.title}}</h2><p>{{item.description}}</p></ion-label>        

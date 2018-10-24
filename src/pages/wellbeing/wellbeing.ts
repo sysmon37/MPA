@@ -21,16 +21,16 @@ export class WellbeingPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public dataService: DataProvider, public alertCtrl: AlertController) {
     this.items = [
-      {title: "Body", iconName: "man", subItems: [
-        {title: 'Good health', content: 'By lowering chances of stroke, you will maintain good health', image: 'body-1', id: Pro.Body1},
-        {title: 'Comfort', content: 'You will be more comfortable talking about your health with your family and health support team', image: 'body-2', id: Pro.Body2}
+      {title: "Corps", iconName: "man", subItems: [
+        {title: 'Bonne santé', content: 'En diminuant la probabilité d’un AVC, vous vous maintiendrez en bonne santé', image: 'body-1', id: Pro.Body1},
+        {title: 'Confort', content: 'Vous serez plus à l’aise pour parler de votre santé avec les membres de votre famille et votre équipe de soutien en santé', image: 'body-2', id: Pro.Body2}
       ]},
-      {title: "Mind", iconName: "bulb", subItems: [
-        {title: 'Optimism', content: 'You will feel more optimistic about your future and enjoy life more', image: 'mind-1', id: Pro.Mind1},
-        {title: 'Reduced health costs', content: 'By following anticoagulation therapy and lowering your risk of stroke, you will reduce healthcare costs for yourself and your family', image: 'mind-2', id: Pro.Mind2},
+      {title: "Esprit", iconName: "bulb", subItems: [
+        {title: 'Optimisme', content: 'Vous vous sentirez plus optimiste quant à votre avenir et profiterez davantage de la vie', image: 'mind-1', id: Pro.Mind1},
+        {title: 'Réduction des coûts des soins de santé', content: 'En suivant l’anticoagulothérapie et en réduisant votre risque d’AVC, vous réduirez les coûts des soins de santé pour vous-même et votre famille.', image: 'mind-2', id: Pro.Mind2},
         {title: 'Meaningful activities', content: 'You will be able to engage in meaningful activities', image: 'mind-3', id: Pro.Mind3}
       ]},
-      {title: "Relationships", iconName: "contacts", subItems: [
+      {title: "Relations", iconName: "contacts", subItems: [
         {title: 'Long-term plans', content: 'You will be able to make long-term plans with your family and friends', image:'relations-1', id: Pro.Relations1},
         {title: 'Live life fully', content: 'You will be able to live your life fully and participate in activities you enjoy', image:'relations-2', id: Pro.Relations2}
       ]}
@@ -48,8 +48,8 @@ export class WellbeingPage {
   ionViewWillEnter(){
     if (this.dataService.getUnderstoodPros().length >= this.dataService.MIN_UNDERSTOOD_PROS && this.dataService.getShowCommitmentPopup()) {
       let alert = this.alertCtrl.create({
-          title: 'Congratulations',
-          subTitle: 'You have realized different kinds of well-being that may result from your engagement and adherence. This is a first significant step in which you have demonstrated your commitment',
+          title: 'Félicitations',
+          subTitle: 'Vous commencez à reconnaître différents types de bienfaits susceptibles de découler de votre mobilisation et de votre adhésion au traitement. Il s’agit d’une première étape importante dans laquelle vous aurez fait preuve de votre engagement.',
           buttons: ['OK']
        });
       alert.present();        

@@ -44,9 +44,9 @@ export class DailySummaryPage {
     constructor(public navCtrl: NavController, public navParams: NavParams, public dataService: DataProvider, private alertCtrl : AlertController) {
         this.drugs = [
             dataService.getTherapyType() == 1
-                ? { id: Treatment.Anticoagulant, title: "Warfarin", description: 'Tablet, 5 mg, 1 x daily', imageUrl: '/assets/warfarin-1x.jpg', value: '', doses: [{ value: '?' }] }
-                : { id: Treatment.Anticoagulant, title: "Dabigatran", description: 'Capsule, 150 mg, 2 x daily', imageUrl: '/assets/dabigatran-2x.jpg', value: '', doses: [{ value: '?' }, { value: '?' }] },
-            { id: Treatment.RateControl, title: "Metoprolol", description: 'Tablet, 25 mg, 2 x daily', imageUrl: '/assets/metoprolol-2x.jpg', value: '', doses: [{ value: '?' }, { value: '?' }] }
+                ? { id: Treatment.Anticoagulant, title: "Warfarine", description: '1 comprimé de 5 mg, 1 fois par jour', imageUrl: '/assets/warfarin-1x.jpg', value: '', doses: [{ value: '?' }] }
+                : { id: Treatment.Anticoagulant, title: "Dabigatran", description: '1 capsule de 150 mg, 2 fois par jour', imageUrl: '/assets/dabigatran-2x.jpg', value: '', doses: [{ value: '?' }, { value: '?' }] },
+            { id: Treatment.RateControl, title: "Métoprolol", description: '1 comprimé de 25 mg, 2 fois par jour', imageUrl: '/assets/metoprolol-2x.jpg', value: '', doses: [{ value: '?' }, { value: '?' }] }
         ];
 
         this.symptoms = [
@@ -57,8 +57,8 @@ export class DailySummaryPage {
 
         this.nutrients = [
             dataService.getTherapyType() == 1
-                ? { id: Nutrient.Minerals, title: 'Vitamin K', description: '', value: '?' }
-                : { id: Nutrient.Minerals, title: 'Grapefruit juice', description: '', value: '?' }
+                ? { id: Nutrient.Minerals, title: 'Vitamine K', description: '', value: '?' }
+                : { id: Nutrient.Minerals, title: 'Jus de pamplemousse', description: '', value: '?' }
         ];
 
         this.dataService.unpackMultiValues(this.dataService.getDrugs(), this.drugs);

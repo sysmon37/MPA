@@ -6,7 +6,7 @@
 -->
 <ion-header>
   <ion-navbar>
-    <ion-title>Action Plan</ion-title>
+    <ion-title>Plan d’action</ion-title>
     <ion-buttons end>
       <button ion-button icon-left (click)="onAddAction()"><ion-icon name="add-circle"></ion-icon>Add Action</button>
     </ion-buttons>
@@ -16,7 +16,7 @@
 
 <ion-content padding class="has-header">
   <!--<button ion-button block outline [disabled]="this.actions.length==0" (click)="onTestReminder()">Test Reminder</button>-->
-  Tap on event to view its reminder
+  Appuyez sur un événement pour afficher l’aide-mémoire correspondant
   <calendar 
     [eventSource]="actions" 
     [calendarMode]="calendarMode" 

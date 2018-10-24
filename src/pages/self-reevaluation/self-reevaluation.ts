@@ -21,14 +21,14 @@ export class SelfReevaluationPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private viewCtrl: ViewController) {
     this.items = [
-      {title: "I am confident that I can get support for medical care and health problems when I need it"},
-      {title: "I have been able to develop a routine to maintain healthy lifestyle"},
-      {title: "I can communicate with my health provider concerns I have even when she/he does not ask"},
-      {title: "I am confident that I can follow through on medical treatments I need to do at home"},
-      {title: "I have willpower to seek out solutions when new situations or problems arise with my health condition"},
-      {title: "I am positive that despite my condition I can live life to the fullest"},
-      {title: "I am confident that time I dedicate to managing my condition is time well spent"},
-      {title: "I am the person who is responsible for managing my health condition"}
+      {title: "Je sens que je peux obtenir du soutien pour des soins médicaux et des problèmes de santé lorsque j’en ai besoin"},
+      {title: "J’ai été en mesure d’établir une routine pour maintenir un mode de vie sain"},
+      {title: "Je peux faire part de mes préoccupations à mon prestateur de soins de santé même lorsqu’il ou elle ne le demande pas"},
+      {title: "Je sens que je peux donner suite, à la maison, aux traitements médicaux dont j’ai besoin"},
+      {title: "J’ai la volonté nécessaire pour trouver des solutions lorsque mon état de santé évolue ou qu’il présente un problème"},
+      {title: "Je sens que, malgré ma condition, je peux vivre pleinement ma vie"},
+      {title: "Je sens que le temps que je consacre à la prise en charge de ma condition est bien employé"},
+      {title: "Je suis le responsable de la prise en charge de mon état de santé"}
     ];
 
     for (let i in this.items)

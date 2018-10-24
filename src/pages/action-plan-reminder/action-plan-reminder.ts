@@ -33,6 +33,6 @@ export class ActionPlanReminderPage {
     console.log('ionViewWillLeave ActionPlanReminderPage');
     let numActions = this.action.items.filter(item => item != '').length;
     let numCompleted = this.action.values.filter(value => value == true).length;
-    this.action.title = numActions + " action" + (numActions > 1 ? "s" : "") + ", " + Math.round(numCompleted/numActions*100.0) +"% completed";
+    this.action.title = numActions + " mesure" + (numActions > 1 ? "s" : "") + ", réalisées à " + Math.round(numCompleted/numActions*100.0) +"%";
   }
 }

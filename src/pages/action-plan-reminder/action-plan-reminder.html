@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Action Plan Reminder</ion-title>
+    <ion-title>Aide-mémoire du plan d’action</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -20,13 +20,13 @@
       <ion-datetime displayFormat="YYYY-MM-DD" [(ngModel)]="startTime" disabled></ion-datetime>
     </ion-item>        
     <ion-item>
-      <ion-label>Start time</ion-label>
+      <ion-label>Heure de début</ion-label>
       <ion-datetime displayFormat="HH:mm" [(ngModel)]="startTime" disabled></ion-datetime>
    </ion-item>        
     <ion-item>
-      <ion-label>Time needed</ion-label>
+      <ion-label>Temps nécessaire</ion-label>
       <ion-select disabled [(ngModel)] = "action.duration">
-          <ion-option value=5>5 min</ion-option>
+          <ion-option value=5>5 minutes</ion-option>
           <ion-option value=10>10 min</ion-option>
           <ion-option value=15>15 min</ion-option>
           <ion-option value=20>20 min</ion-option>
@@ -59,7 +59,7 @@
   <ion-list>
     <ion-item>
       <ion-label stacked>Notes</ion-label>
-      <ion-textarea [(ngModel)]="action.notes" placeholder="Enter additional notes on how you have executed your actions"></ion-textarea>
+      <ion-textarea [(ngModel)]="action.notes" placeholder="Consignez la façon dont vous avez pris vos mesures"></ion-textarea>
     </ion-item>
   </ion-list>
 

@@ -77,7 +77,7 @@ export class WeeklySummaryPage {
     this.overallChart = new Chart(this.overallCanvas.nativeElement, {
       type: 'line',
       data: {
-        labels: ['Dim.', 'Lun.', 'Mar.', 'Mer.', 'Jeu.', 'Ven.', 'Sam.'],
+        labels: ['dim.', 'lun.', 'mar.', 'mer.', 'jeu.', 'ven.', 'sam.'],
         datasets: [
           {
             fill:false,

@@ -8,7 +8,7 @@
   <ion-navbar>
     <ion-title>Plan d’action</ion-title>
     <ion-buttons end>
-      <button ion-button icon-left (click)="onAddAction()"><ion-icon name="add-circle"></ion-icon>Add Action</button>
+      <button ion-button icon-left (click)="onAddAction()"><ion-icon name="add-circle"></ion-icon>Ajouter d’action</button>
     </ion-buttons>
   </ion-navbar>
 </ion-header>
@@ -22,6 +22,7 @@
     [calendarMode]="calendarMode" 
     [currentDate]="todayDate"
     [markDisabled]="markDisabled"
+    locale="fr-CA"
     (onCurrentDateChanged)="onDateChanged($event)"
     (onEventSelected)="onActionSelected($event)">
   </calendar>

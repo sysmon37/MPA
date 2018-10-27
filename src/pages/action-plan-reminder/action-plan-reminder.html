@@ -26,7 +26,7 @@
     <ion-item>
       <ion-label>Temps nécessaire</ion-label>
       <ion-select disabled [(ngModel)] = "action.duration">
-          <ion-option value=5>5 minutes</ion-option>
+          <ion-option value=5>5 min</ion-option>
           <ion-option value=10>10 min</ion-option>
           <ion-option value=15>15 min</ion-option>
           <ion-option value=20>20 min</ion-option>
@@ -51,7 +51,7 @@
   <ion-list>
     <ng-container *ngFor="let item of action.items; let i = index">
       <ion-item *ngIf="item!=''">
-        <ion-label>{{item}}</ion-label>
+        <ion-label text-wrap>{{item}}</ion-label>
         <ion-checkbox [(ngModel)]="action.values[i]"></ion-checkbox>
       </ion-item>
     </ng-container>
